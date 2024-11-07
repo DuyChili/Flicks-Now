@@ -52,6 +52,7 @@ public class AdminActivity extends AppCompatActivity {
         binding = ActivityAdminBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         dataUser = FirebaseDatabase.getInstance().getReference("Users");
         dataTruyCap = FirebaseDatabase.getInstance().getReference("TruyCap");
         dataThanhToan = FirebaseDatabase.getInstance().getReference("YeuCau");
