@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/meBlack"
+    tools:context=".activity.VipActivity">
+
+    <!-- Phần giao diện chính của ứng dụng -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- NestedScrollView để cuộn được -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#212121"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thường"
+                    android:textColor="#ffafb0"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal" />
+                <!-- Free Plan Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#CCECECEC"
+                    android:padding="16dp"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Người sử dụng miễn phí"
+                        android:textColor="#333"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:layout_marginTop="8dp" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0đ/ tháng"
+                        android:textStyle="bold"
+                        android:textColor="#FF025A"
+                        android:textSize="18sp"
+                        android:layout_marginTop="4dp" />
+
+                    <Button
+                        android:id="@+id/btnFree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đang sử dụng"
+                        android:backgroundTint="#00FB21"
+                        android:textColor="#000000"
+                        android:layout_marginTop="12dp"
+                        android:paddingHorizontal="32dp"
+                        android:paddingVertical="8dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="12dp">
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✔️ Xem các bộ phim không thuộc gói Vip"
+                            android:textColor="#000000"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VIP"
+                    android:textColor="#ffafb0"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal" />
+                <!-- VIP Plan Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#CBECECEC"
+                    android:padding="16dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal">
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Người sử dụng gói VIP"
+                        android:textColor="#333"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:layout_marginTop="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="99.000đ/ tháng"
+                        android:textColor="#FF025A"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_marginTop="4dp" />
+
+                    <Button
+                        android:id="@+id/btnDangKy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đăng ký ngay"
+                        android:backgroundTint="#ff66b2"
+                        android:textColor="#fff"
+                        android:layout_marginTop="12dp"
+                        android:paddingHorizontal="32dp"
+                        android:paddingVertical="8dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="12dp">
+
+                        <TextView
+                            android:id="@+id/vip_plan_feature1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✔️ Tải video xem offline không giới hạn"
+                            android:textColor="#000000" />
+
+                        <TextView
+                            android:id="@+id/vip_plan_feature2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✔️ Xem các bộ phim thuộc gói vip"
+                            android:textColor="#000000"
+                            android:layout_marginTop="4dp" />
+
+                        <TextView
+                            android:id="@+id/vip_plan_feature3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✔️ Không quảng cáo"
+                            android:textColor="#000000"
+                            android:layout_marginTop="4dp" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- Bottom Navigation nằm ở dưới cùng -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="selected"
+        android:background="@color/bottom_nav_unselected"/>
+</FrameLayout>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.QLHoTroActivity">
+    <!-- Nút quay lại và tiêu đề -->
+    <LinearLayout
+        android:background="#d155bc"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Nút quay lại -->
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_back"
+            android:contentDescription="@string/back"
+            />
+
+        <!-- Tiêu đề -->
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title"
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Thông tin Phản hồi"
+            android:textSize="26sp"
+            android:textColor="@android:color/black" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:orientation="vertical"
+            android:padding="10dp"
+            >
+            <!-- Tên người dùng -->
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Name"
+                android:textSize="25sp"
+                android:textColor="#FFF"
+                android:layout_marginBottom="4dp"
+                android:textStyle="bold" />
+
+            <!-- Ngày gửi -->
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sent on: 2024-10-23"
+                android:textSize="14sp"
+                android:textColor="#FFF"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Nội dung -->
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is the content of the message."
+                android:textSize="18sp"
+                android:textColor="#FFF"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Hình ảnh -->
+            <ImageView
+                android:id="@+id/ivHinhanh"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="8dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phản hồi"
+                android:textSize="25sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="4dp"
+                android:textStyle="bold" />
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ten noi dung"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="16dp" />
+            <!-- Mã vé hỗ trợ -->
+            <EditText
+                android:id="@+id/inputTicketCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập ten noi dung"
+                android:background="@drawable/bg_edittext"
+                android:padding="16dp"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
+            <!-- Mô tả vấn đề -->
+            <TextView
+                android:id="@+id/labelDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Noi dung thong bao"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/inputDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mô tả ít nhất 6 kí tự"
+                android:background="@drawable/bg_edittext"
+                android:padding="16dp"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:maxLines="5"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+    </ScrollView>
+    <!-- Save Changes Button -->
+    <Button
+        android:textSize="25sp"
+        android:id="@+id/btnSaveChanges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gửi hỗ trợ"
+        android:backgroundTint="#ca8dbd"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        android:layout_margin="14dp"/>
+
+
+</LinearLayout>

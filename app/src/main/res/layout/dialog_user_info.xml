@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- Header với icon user -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/canhan"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvUserNameDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên người dùng"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/info_user_background"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã Người dùng: "
+                android:textColor="#78FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginStart="12dp" />
+
+            <TextView
+                android:id="@+id/tvIdUserDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã User"
+                android:textColor="#FFFFFF"
+
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email: "
+                android:textColor="#78FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp"/>
+
+            <TextView
+                android:id="@+id/tvEmailDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="email@example.com"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <!-- Spinner cho loại người dùng -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loại người dùng: "
+                android:textColor="#78FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginStart="12dp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinnerUserType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:entries="@array/user_types"
+                android:theme="@style/SpinnerTheme"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày đăng ký: "
+                android:textColor="#78FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginStart="12dp"
+                />
+
+            <TextView
+                android:id="@+id/tvCreateDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày đăng ký"
+                android:textColor="#FFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trạng thái: "
+                android:textColor="#78FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginStart="12dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTrangThaiDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="onlline"
+                android:textColor="#4CAF50"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="#FF5252"
+            android:textAllCaps="false"
+            android:layout_marginEnd="8dp"
+            app:cornerRadius="8dp"
+            android:text="Cancel" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnXacNhan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="2"
+            app:cornerRadius="8dp"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/design_default_color_secondary_variant"
+            android:text="Lưu thông tin" />
+    </LinearLayout>
+</LinearLayout>

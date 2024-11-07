@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF"/> <!-- Thêm màu nền đơn nếu cần -->
+    <gradient
+        android:startColor="#1A237E"
+        android:endColor="#0D47A1"
+        android:angle="45"/>
+
+</shape>

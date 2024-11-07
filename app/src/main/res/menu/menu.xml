@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_theloai"
+        android:title="Thể Loại"
+        android:icon="@drawable/baseline_arrow_drop_down_24"/>
+    <item
+        android:id="@+id/nav_phimbo"
+        android:title="Phim Bộ"
+        android:icon="@drawable/ic_phimbo"/>
+    <item
+        android:id="@+id/nav_phimle"
+        android:title="Phim Lẻ"
+        android:icon="@drawable/baseline_confirmation_number_24"/>
+    <item
+        android:id="@+id/nav_quocgia"
+        android:title="Quốc Gia"
+        android:icon="@drawable/baseline_language_24"/>
+
+</menu>

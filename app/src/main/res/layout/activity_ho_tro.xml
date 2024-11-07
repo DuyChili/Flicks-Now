@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.HoTroActivity">
+
+    <!-- Nút quay lại và tiêu đề -->
+    <LinearLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="#F06292"
+        android:gravity="center_vertical">
+
+        <!-- Nút quay lại -->
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_back"
+            android:contentDescription="@string/back"
+             />
+
+        <!-- Tiêu đề -->
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title"
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Hỗ trợ khác"
+            android:textSize="26sp"
+            android:textColor="@android:color/black" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+        <!-- Mô tả vấn đề -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Họ Tên"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp" />
+        <!-- Mã vé hỗ trợ -->
+        <EditText
+            android:id="@+id/inputTicketCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập họ tên"
+            android:background="@drawable/bg_edittext"
+            android:padding="16dp"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_marginTop="16dp" />
+
+        <!-- Mô tả vấn đề -->
+        <TextView
+            android:id="@+id/labelDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mô tả vấn đề"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/inputDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mô tả ít nhất 6 kí tự"
+            android:background="@drawable/bg_edittext"
+            android:padding="16dp"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:maxLines="5"
+            android:layout_marginTop="8dp" />
+
+        <!-- Ảnh mô tả -->
+        <TextView
+            android:id="@+id/labelImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thêm hình ảnh mô tả vấn đề/lỗi để được hỗ trợ nhanh hơn"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:id="@+id/imgUpload"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_image_placeholder"
+            android:src="@drawable/baseline_upload_file_24"
+            android:contentDescription="Upload Image" />
+    </LinearLayout>
+
+
+
+    <!-- Nút gửi yêu cầu -->
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gửi yêu cầu hỗ trợ"
+        android:textColor="#000"
+        android:backgroundTint="#F06292"
+        android:layout_marginBottom="40dp" />
+
+</LinearLayout>

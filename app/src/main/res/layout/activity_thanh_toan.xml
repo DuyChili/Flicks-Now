@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- ScrollView chứa nội dung chính -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btnPayment"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thanh toán"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:paddingBottom="16dp" />
+
+            <!-- QR Code -->
+            <ImageView
+                android:id="@+id/qrCode"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ma_qr" />
+
+
+            <!-- Instruction Text -->
+            <TextView
+                android:id="@+id/tvInstruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Để mua gói VIP vui lòng làm theo các bước sau:"
+                android:textColor="#FFFF00"
+                android:textSize="16sp"
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp" />
+
+            <!-- Step 1 -->
+            <TextView
+                android:id="@+id/tvStep1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bước 1: Quét mã QR trên"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Step 2 - Input -->
+            <TextView
+                android:id="@+id/tvStep2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bước 2: Nhập nội dung thanh toán như sau:"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:paddingBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:gravity="center_vertical">
+
+                <!-- TextView Nội dung thanh toán -->
+                <TextView
+                    android:id="@+id/tvNoiDungThanhToan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:background="@drawable/bg_noi_dung"
+                    android:padding="10dp"
+                    android:text="KH01-D01"
+                    android:textColor="#FF0000"
+                    android:textSize="16sp"
+                    android:inputType="none" />
+
+                <!-- Button Icon Copy -->
+                <ImageButton
+                    android:id="@+id/btnCopy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:contentDescription="Copy"
+                    android:src="@drawable/baseline_content_copy_24"
+                    android:scaleType="centerInside" />
+            </LinearLayout>
+
+            <!-- Step 3 -->
+            <TextView
+                android:id="@+id/tvStep3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bước 3: Kiểm tra thật kĩ nội dung thanh toán, nếu đã chuyển khoản vui lòng nhấn nút Đã thanh toán."
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp" />
+
+            <!-- Note -->
+            <TextView
+                android:id="@+id/tvNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lưu ý: chúng tôi sẽ không chịu trách nhiệm nếu bạn nhập sai nội dung thanh toán."
+                android:textColor="#FF0000"
+                android:textSize="12sp"
+                android:paddingBottom="16dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Nút Payment nằm dưới cùng màn hình -->
+    <Button
+        android:id="@+id/btnPayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Đã thanh toán"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FF00FF"
+        android:padding="12dp" />
+
+</RelativeLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Cddd2_nhom6"
+        tools:targetApi="31">
+        <activity
+            android:name=".activity.ThemPhimActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.QLPhimActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ManHinhChaoMung"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.DoanhThuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.QLYeuCauActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.QLUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.XemThemPhim"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CaNhanActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ThanhToanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.VipActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.XemPhimActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ChiTietPhimActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:name=".activity.DSThongBaoActivity" />
+        <activity android:name=".activity.QLThongBaoActivity" />
+        <activity android:name=".activity.DangKyActivity" />
+        <activity
+            android:name=".activity.DangNhapActivity"
+            android:exported="true" />
+        <activity android:name=".activity.LichSuXemActivity" />
+        <activity android:name=".activity.DanhSachYeuThichActivity" />
+        <activity android:name=".activity.CaiDatActivity"/>
+        <activity android:name=".activity.ChinhSuaThongTinActivity"/>
+        <activity android:name=".activity.ThongBaoActivity"/>
+        <activity android:name=".activity.QuanLyAPI" android:exported="true"/>
+        <activity android:name=".activity.TaiPhimActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:name=".activity.XemPhimTaixuongActivity" />
+        <activity android:name=".activity.HoTroActivity" />
+    </application>
+
+</manifest>

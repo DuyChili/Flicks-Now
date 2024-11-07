@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1A1A1A"
+    android:orientation="vertical"
+    tools:context=".activity.QLUserActivity">
+
+    <!-- Nút quay lại và tiêu đề -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#1E1E1E"
+        android:elevation="4dp">
+
+        <!-- Nút quay lại -->
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back"
+            android:padding="12dp"
+            android:src="@drawable/ic_back" />
+
+        <!-- Tiêu đề -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Quản lý User"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Thống Kê"
+                android:textColor="#FF4081"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/btnYeuCau"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:layout_marginHorizontal="14dp"
+                android:layout_marginBottom="10sp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_luot_dang_ky"
+                    android:layout_marginEnd="16dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvLuotDangKy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Gói Vip Hôm Nay"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginTop="1dp"
+                            android:text="Tổng số lượt đăng ký: "/>
+                        <TextView
+                            android:id="@+id/tvSLUserDangKy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="24sp"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginTop="1dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1sp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="italic"
+                            android:text="Số lượt chưa xử lý: "/>
+                        <TextView
+                            android:id="@+id/tvSLUserChuaXL"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="24sp"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="italic"
+                            android:text="Số lượt đã xử lý: "/>
+                        <TextView
+                            android:id="@+id/tvSLUserDaXL"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="0dp"
+                android:columnCount="2"
+                android:rowCount="2">
+                <!-- Lượt đăng ký -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_corner"
+                    android:elevation="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="#33FFFFFF"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_luot_dang_ky" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvGoiThuong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="User dùng gói Thường"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tvSLGoiThuongDangKy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Gói VIP -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_corner"
+                    android:elevation="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="#33FFFFFF"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_goi_vip" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvGoiVIP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="User dùng gói VIP"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tvSLGoiVipDangKy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </GridLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/rounded_search_bar"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <!-- Icon tìm kiếm -->
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_search_24" />
+
+                    <!-- EditText cho tìm kiếm -->
+                    <EditText
+                        android:id="@+id/searchEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="Tìm kiếm user"
+                        android:inputType="text"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#80FFFFFF"
+                        android:textSize="15sp" />
+                </LinearLayout>
+                <!-- ComboBox (Spinner) để chọn trạng thái online/offline -->
+                <Spinner
+                    android:id="@+id/spinnerStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:spinnerMode="dropdown" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingBottom="16dp"
+                tools:listitem="@layout/item_user" />
+            <!-- ProgressBar để hiển thị quá trình tải dữ liệu -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

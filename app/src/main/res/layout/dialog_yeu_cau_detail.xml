@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/info_user_background"
+        android:orientation="vertical"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Họ tên: "
+                android:textColor="#78FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginStart="12dp" />
+
+            <TextView
+                android:id="@+id/tvUserNameDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên người dùng"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã Người dùng: "
+                android:textColor="#78FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp"/>
+
+            <TextView
+                android:id="@+id/tvIdUserDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã User"
+                android:textColor="#FFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nội dung thanh toán: "
+                android:textColor="#78FFFFFF"
+                android:layout_marginStart="12dp"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvContentDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nội dung yêu cầu"
+                android:textColor="#FFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số Tiền: "
+                android:textColor="#78FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginStart="12dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAmountDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số tiền"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày thanh toán: "
+                android:textColor="#78FFFFFF"
+                android:layout_marginStart="12dp"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPaymentDateDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày thanh toán"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnXacNhanVip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/design_default_color_secondary_variant"
+        android:text="Xác nhận lên VIP" />
+</LinearLayout>

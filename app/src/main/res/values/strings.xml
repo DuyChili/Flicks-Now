@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Flicks Now</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="favorite_button_label">Yêu thích</string>
+    <string name="fullscreen">fullscreen</string>
+    <string name="episode">Tập phim</string>
+
+    <string-array name="genre_array">
+        <item>Thể loại</item> <!-- Giá trị mặc định -->
+        <item>Hành động</item>
+        <item>Tình cảm</item>
+        <item>Kinh dị</item>
+        <item>Viễn tưởng</item>
+        <item>Hoạt hình</item>
+    </string-array>
+    <string-array name="trang_thai">
+        <item>All</item>
+        <item>Đã xử lý</item>
+        <item>Chưa xử lý</item>
+    </string-array>
+    <string-array name="country_array">
+        <item>Chọn quốc gia</item> <!-- Giá trị mặc định -->
+        <item>Việt Nam</item>
+        <item>Hoa Kỳ</item>
+        <item>Nhật Bản</item>
+        <item>Hàn Quốc</item>
+        <item>Pháp</item>
+        <item>Ấn Độ</item>
+        <item>Trung Quốc</item>
+        <item>Thái Lan</item>
+    </string-array>
+    <string-array name="user_types">
+        <item>Thường</item>
+        <item>VIP</item>
+        <item>Admin</item>
+        <item>Quản lý</item>
+    </string-array>
+    <string-array name="goi_array">
+        <item>Chọn Gói</item> <!-- Giá trị mặc định -->
+        <item>Thường</item>
+        <item>Vip</item>
+    </string-array>
+    <string-array name="status_options">
+        <item>All</item>
+        <item>Online</item>
+        <item>Offline</item>
+    </string-array>
+    <string name="back">Quay lại</string>
+    <string name="submit_request">Gửi yêu cầu hỗ trợ</string>
+</resources>

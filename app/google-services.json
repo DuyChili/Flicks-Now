@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "704518222479",
+    "project_id": "flicks-now-912be",
+    "storage_bucket": "flicks-now-912be.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704518222479:android:71b5c927f6104897d636fa",
+        "android_client_info": {
+          "package_name": "com.example.flicks_now"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALLy-7EPH9I3bpwJS_PZyM9pXPbKpTRs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

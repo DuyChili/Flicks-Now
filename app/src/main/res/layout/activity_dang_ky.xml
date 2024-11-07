@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp"
+    android:background="@drawable/hinhnenchaomung">
+
+    <ImageView
+        android:id="@+id/ic_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="-5dp"
+        android:layout_marginLeft="-5dp"
+        android:src="@drawable/baseline_arrow_back_24"/>
+
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"
+        android:clipChildren="true">
+
+        <ImageView
+            android:id="@+id/imvLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/image"
+            android:clipToOutline="true"
+            android:contentDescription="Logo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/background"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <EditText
+            android:id="@+id/edtHT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edittext_border"
+            android:backgroundTint="#CCCCCC"
+            android:hint=" Họ Tên"
+            android:inputType="text"
+            android:padding="10dp"
+            android:drawableStart="@drawable/baseline_people_24"/>
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edittext_border"
+            android:backgroundTint="#CCCCCC"
+            android:hint=" Email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:drawableStart="@drawable/baseline_email_24"/>
+
+
+        <!-- Password Input -->
+        <EditText
+            android:id="@+id/edtMk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edittext_border"
+            android:backgroundTint="#CCCCCC"
+            android:hint=" Mật Khẩu"
+            android:drawableStart="@drawable/baseline_lock_outline_24"
+            android:drawableEnd="@drawable/baseline_visibility_off_24"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/edtNLMK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/edittext_border"
+            android:backgroundTint="#CCCCCC"
+            android:hint=" Nhập Lại Mật Khẩu"
+            android:drawableStart="@drawable/baseline_lock_outline_24"
+            android:drawableEnd="@drawable/baseline_visibility_off_24"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/btnDangKy"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#E63946"
+            android:layout_marginBottom="20dp"
+            android:text="Đăng Ký"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>
+

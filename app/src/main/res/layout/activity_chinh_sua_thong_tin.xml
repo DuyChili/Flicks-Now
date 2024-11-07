@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:background="#222222"
+    >
+
+    <!-- Back button -->
+    <ImageButton
+        android:id="@+id/btnThoat"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_back"
+        android:layout_gravity="start"
+        android:padding="5dp"
+        app:tint="#FFFFFF" />
+
+    <!-- Avatar -->
+    <ImageView
+        android:id="@+id/ivHinhanh"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/baseline_person_24"
+        android:background="@drawable/border_radiu_caidat"
+        android:scaleType="centerCrop"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <!-- Edit button -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thay đổi mật khẩu"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FF4081"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mật khẩu hiện tại: "
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/edtMkCu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="#000000"
+            android:background="@drawable/rounded_search_bar"
+            android:drawableEnd="@drawable/baseline_visibility_off_24"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mật khẩu mới: "
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/edtMkMoi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="#000000"
+            android:background="@drawable/rounded_search_bar"
+            android:drawableEnd="@drawable/baseline_visibility_off_24"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhập lại mật khẩu:"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/edtMkMoi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="#000000"
+            android:background="@drawable/rounded_search_bar"
+            android:drawableEnd="@drawable/baseline_visibility_off_24"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"/>
+
+
+
+
+    <!-- Save and Cancel buttons -->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnLuu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="0dp"
+            android:backgroundTint="#FF4081"
+            android:text="Lưu thay đổi"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+</LinearLayout>

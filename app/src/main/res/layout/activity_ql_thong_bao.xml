@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#4D4D4D"
+    tools:context=".activity.QLThongBaoActivity">
+    <!-- Nút quay lại và tiêu đề -->
+    <LinearLayout
+        android:background="#d155bc"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Nút quay lại -->
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_back"
+            android:contentDescription="@string/back"
+            />
+
+        <!-- Tiêu đề -->
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title"
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Quản lý thông báo"
+            android:textSize="26sp"
+            android:textColor="@android:color/black" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+        <!-- Mô tả vấn đề -->
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tiêu đề"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp" />
+        <!-- Mã vé hỗ trợ -->
+        <EditText
+            android:id="@+id/edtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập tiêu đề"
+            android:background="@drawable/bg_edittext"
+            android:padding="16dp"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
+
+        <!-- Mô tả vấn đề -->
+        <TextView
+            android:id="@+id/labelDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nội dung thông báo"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/edtNoiDung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mô tả ít nhất 6 kí tự"
+            android:background="@drawable/bg_edittext"
+            android:padding="16dp"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:maxLines="5"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/labelchonnguoidung"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thông tin nguoi dung"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"/>
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/rcvNguoiDung"
+           tools:listitem="@layout/item_user_thongbao"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <!-- Save Changes Button -->
+    <Button
+        android:textSize="25sp"
+        android:id="@+id/btnSaveChanges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gửi Thông báo"
+        android:backgroundTint="#ca8dbd"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        android:layout_margin="14dp"/>
+
+</LinearLayout>

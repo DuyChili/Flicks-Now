@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#4D4D4D"
+    tools:context=".activity.ThemPhimActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="#323131">
+
+        <ImageView
+            android:padding="30dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:src="@drawable/exit_left"
+            android:contentDescription="Exit Icon" />
+
+        <!-- Title Section (TextView nằm chính giữa) -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Thêm Phim"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_gravity="center" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:background="#4D4D4D">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@drawable/rounded_background">
+
+            <!-- Hình ảnh phim -->
+            <ImageView
+                android:id="@+id/posterImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/poster_image_placeholder"
+                android:adjustViewBounds="true"
+                />
+            <TextView
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Poster"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/poster_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="poster_url"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="#000000" />
+
+            <!-- Form thông tin phim -->
+            <TextView
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phim"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+            <EditText
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tên phim"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nội dung phim"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mô tả"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="#000000" />
+            <TextView
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Diễn vien"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/cast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Diễn viên"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tác giả"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/actor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tác giả"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="#000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <Button
+                    android:id="@+id/select_genres_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chọn thể loại" />
+
+                <TextView
+                    android:id="@+id/selected_genres_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Thể loại đã chọn sẽ hiển thị tại đây"
+                    android:paddingTop="12dp"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/country_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/country_array"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp" />
+
+            <!-- Bỏ ô trạng thái -->
+
+            <TextView
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thời lượng"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Thời lượng"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Năm"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/release_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Năm phát hành"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="#000000" />
+
+            <!-- Spinner để chọn gói (Thường/Vip) -->
+            <Spinner
+                android:layout_marginTop="10dp"
+                android:id="@+id/goi_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:entries="@array/goi_array"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp" />
+
+
+
+            <TextView
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thumb"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/thumb_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="thumb_url"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="URL Phim"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/movie_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="URL_phim"
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="#000000" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Nút Reset và Thêm -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/reset_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Reset"
+            android:backgroundTint="#FFA500"
+            android:textColor="#ffffff"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:layout_weight="3"
+            android:id="@+id/submit_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Thêm"
+            android:backgroundTint="#FF69B4"
+            android:textColor="#ffffff"
+            android:padding="12dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>

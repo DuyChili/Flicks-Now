@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.CaiDatActivity"
+    android:background="#504d4e"
+    >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="269dp"
+                android:background="#F3D1D1"
+                android:orientation="horizontal"
+                android:paddingTop="30dp">
+                <ImageView
+                    android:id="@+id/btnThoat"
+                    android:paddingRight="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:src="@drawable/exit_left"/>
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:textColor="#000"
+                    android:text="Cài đặt"
+                    android:textSize="40dp" />
+                <ImageView
+
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="100dp"
+
+                    android:src="@drawable/settings" />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="60dp"
+            android:layout_gravity="center"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/border_radiu_caidat">
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <ImageView
+                    android:layout_marginRight="10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/canhan"/>
+                <TextView
+                    android:id="@+id/tvTendangnhap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Huỳnh Văn Duy"
+                    android:textColor="#000"
+                    android:textSize="25dp"/>
+                <ImageView
+                    android:id="@+id/ivdangxuat"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/exit"/>
+
+            </LinearLayout>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="340dp"
+                android:layout_height="2dp"
+                android:background="#F3D5D5"/>
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thiết lập tài khoản"
+                android:textSize="20dp"
+                android:textColor="#919090"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tvThaydoiMk"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thay đổi mật khẩu"
+                    android:textColor="#000"
+                    android:textSize="25dp"
+                    />
+                <ImageView
+                    android:layout_marginLeft="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/img_1"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giao diện sáng tối"
+                    android:textColor="#000"
+                    android:textSize="25dp"
+                    />
+                <Switch
+                    android:layout_marginLeft="60dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_width="340dp"
+                android:layout_height="2dp"
+                android:background="#F3D5D5"/>
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thông tin Thêm"
+                android:textSize="20dp"
+                android:textColor="#919090"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Về chúng tôi"
+                    android:textColor="#000"
+                    android:textSize="25dp"
+                    />
+                <ImageView
+                    android:layout_marginLeft="125dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textColor="#000"
+                    android:src="@drawable/img_1"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/troGiup"
+                >
+                <TextView
+
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trợ giúp"
+                    android:textColor="#000"
+                    android:textSize="25dp"
+                    />
+                <ImageView
+                    android:layout_marginLeft="170dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/img_1"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>

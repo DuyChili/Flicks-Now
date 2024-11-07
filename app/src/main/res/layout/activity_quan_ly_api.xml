@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#696969">
+
+    <!-- Header Layout -->
+    <LinearLayout
+        android:id="@+id/headerSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#333333"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/exitIcon"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/exit_left"
+            android:contentDescription="Exit Icon" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="Quản Lý API"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+
+    <!-- RecyclerView for API List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvApiList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headerSection"
+        android:layout_marginTop="8dp" />
+    <LinearLayout
+        android:id="@+id/selectedApiSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="#00405d">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="API ĐANG SỬ DỤNG"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_marginBottom="4dp" />
+        <ImageView
+            android:id="@+id/img_selectApi"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+</RelativeLayout>

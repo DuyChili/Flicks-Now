@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#00405d"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/btn_quanly_phim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quản lý phim"
+        android:drawableLeft="@drawable/film"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:gravity="center_vertical"/>
+
+    <Button
+        android:id="@+id/btn_doanh_thu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Doanh thu"
+        android:drawableLeft="@drawable/graph"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:padding="10dp"
+        android:gravity="center_vertical"/>
+    <Button
+        android:id="@+id/btn_ql_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quản lý User"
+        android:drawableLeft="@drawable/user"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:padding="10dp"
+        android:gravity="center_vertical"/>
+    <Button
+        android:id="@+id/btn_ql_theloai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quản lý thể loại"
+        android:drawableLeft="@drawable/theloai"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:padding="10dp"
+        android:gravity="center_vertical"/>
+    <Button
+        android:id="@+id/btn_ql_quocgia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quản lý quốc gia"
+        android:drawableLeft="@drawable/globe"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:padding="10dp"
+        android:gravity="center_vertical"/>
+    <Button
+        android:id="@+id/btn_ThongBao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quản lý thông báo"
+        android:drawableLeft="@drawable/tainghe"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:padding="10dp"
+        android:gravity="center_vertical"/>
+    <Button
+        android:id="@+id/btn_hotro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thông tin hỗ trợ"
+        android:drawableLeft="@drawable/tainghe"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:padding="10dp"
+        android:gravity="center_vertical"/>
+    <Button
+        android:id="@+id/btn_ql_api"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quản lý API"
+        android:drawableLeft="@drawable/api"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:padding="10dp"
+        android:gravity="center_vertical"/>
+
+    <!-- Tiếp tục thêm các button cho các chức năng khác tương tự -->
+
+</LinearLayout>

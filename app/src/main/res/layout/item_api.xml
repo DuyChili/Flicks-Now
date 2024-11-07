@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#00405d">
+
+    <!-- Hình ảnh logo của API nằm sát lề trái -->
+    <ImageView
+        android:id="@+id/imgApiLogo"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:adjustViewBounds="true"
+        android:contentDescription="API Logo"
+        android:paddingLeft="10dp"
+        android:scaleType="centerInside" />
+
+    <!-- Nút xóa nằm sát lề phải -->
+    <ImageView
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="Delete Button"
+        android:scaleType="centerInside"
+        android:src="@drawable/baseline_delete_24" />
+
+    <!-- Nút sửa nằm sát nút xóa, bên trái nút xóa -->
+    <ImageView
+        android:id="@+id/btnEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toStartOf="@id/btnDelete"
+        android:adjustViewBounds="true"
+        android:contentDescription="Edit Button"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_edit_24" />
+
+    <!-- EditText để nhập thông tin sửa -->
+    <EditText
+        android:id="@+id/editApiName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgApiLogo"
+        android:layout_marginTop="8dp"
+        android:hint="Enter new API name"
+        android:padding="8dp"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+    <!-- EditText để nhập URL -->
+    <EditText
+        android:id="@+id/editApiUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editApiName"
+        android:layout_marginTop="8dp"
+        android:hint="Enter new URL"
+        android:padding="8dp"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+    <!-- Nút để lưu thay đổi -->
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editApiUrl"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Save"
+        android:visibility="gone" />
+
+</RelativeLayout>

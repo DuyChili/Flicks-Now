@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_main"
+    android:orientation="vertical"
+    tools:context=".activity.QLPhimActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Header với gradient -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/header_gradient"
+            android:orientation="horizontal"
+            android:elevation="4dp"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:src="@drawable/exit_left"
+                android:contentDescription="Exit Icon"
+                android:padding="8dp"
+                android:tint="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="Quản Lý Phim"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:gravity="center" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/delete_icon"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_delete_24"
+                    android:contentDescription="Delete Icon"
+                    android:padding="8dp"
+                    android:tint="@color/text_primary"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Filter section với card view -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/card_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <Button
+                    android:id="@+id/btnChonTatCa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="@color/button_primary"
+                    android:text="All ngày"
+                    android:textColor="@color/text_button"
+                    android:padding="8dp" />
+
+                <Button
+                    android:id="@+id/btnngaytao"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:backgroundTint="@color/button_primary"
+                    android:text="Chọn ngày"
+                    android:textColor="@color/text_button"
+                    android:padding="8dp" />
+
+                <Spinner
+                    android:id="@+id/spinnerTimGoi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/spinner_ql_phim"
+                    android:padding="8dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- RecyclerView với item cards -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:padding="8dp"
+            android:clipToPadding="false"
+            tools:listitem="@layout/item_ql_phim" />
+
+        <!-- Nút thêm phim với gradient -->
+        <Button
+            android:id="@+id/btnAddPhim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm Phim"
+            android:textSize="18sp"
+            android:backgroundTint="@color/button_primary"
+            android:textColor="@color/text_button"
+            android:padding="12dp"
+            android:layout_margin="16dp"
+            android:elevation="4dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
