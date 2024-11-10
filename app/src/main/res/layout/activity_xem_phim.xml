@@ -3,164 +3,285 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#696969">
+    android:background="#F5F6FA">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <!-- Video Player -->
         <androidx.media3.ui.PlayerView
             android:id="@+id/playerView"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            app:resize_mode="fill"
-            android:background="#000">
+            android:layout_height="220dp"
+            app:resize_mode="fixed_height"
+            android:background="#001F3F">
             <include layout="@layout/custom_player_controls" />
         </androidx.media3.ui.PlayerView>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp">
+            android:scrollbars="none">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/playerView"
-                android:padding="5dp">
+                android:orientation="vertical">
 
-                <!-- Favorite and Download Buttons -->
-                <LinearLayout
+                <!-- Movie Title Card -->
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:background="#708090"
-                    android:layout_gravity="center">
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
 
-                    <ImageButton
-                        android:id="@+id/btnAddToFavorites"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/baseline_favorite_24"
-                        android:contentDescription="@null" />
-
-                    <ImageButton
-                        android:id="@+id/btnDowload"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        app:srcCompat="@drawable/baseline_file_download_24"
-                        android:contentDescription="@null"
-                        app:tint="#3b5998" />
-
-                    <ImageButton
-                        android:id="@+id/btnReport"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        app:srcCompat="@drawable/baseline_report_24"
-                        android:contentDescription="@null"
-                        app:tint="#3b5998" />
-
-                    <ImageButton
-                        android:id="@+id/btnShare"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        app:srcCompat="@drawable/ic_share_24"
-                        android:contentDescription="@null"
-                        app:tint="#3b5998" />
-                </LinearLayout>
-
-                <!-- Movie Title -->
-                <TextView
-                    android:id="@+id/tvMovieTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="bold"
-                    android:paddingTop="5dp"
-                    android:background="@drawable/text_title"
-                    android:paddingBottom="5dp" />
-
-                <!-- Episode List -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcvTapPhim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/text_title"
-                    android:clipToPadding="false"
-                    android:paddingTop="5dp"
-                    android:scrollbars="horizontal" />
-
-                <!-- Comment Section -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
                     <TextView
-                        android:id="@+id/tvCommentHeader"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tvMovieTitle"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Bình luận"
+                        android:padding="16dp"
                         android:textSize="20sp"
-                        android:textColor="@color/white"
-                        android:padding="5dp" />
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:orientation="horizontal"
-                        android:gravity="end"
-                        android:layout_marginVertical="2dp">
+                        android:textColor="#1E3A8A"
+                        android:textStyle="bold"
+                        android:background="#FFFFFF"/>
+                </com.google.android.material.card.MaterialCardView>
 
-                        <RatingBar
-                            android:id="@+id/ratingBar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="50dp"
-                            android:numStars="5"
-                            android:progressTint="@color/color_your_rating"
-                            android:rating="0"
-                            android:layout_gravity="center_vertical"
-                            android:scaleX="0.5"
-                            android:scaleY="0.5"
-                            android:stepSize="1.0" />
+                <!-- Action Buttons -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="#FFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp"
+                        android:weightSum="4">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <ImageButton
+                                android:id="@+id/btnAddToFavorites"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/circular_button_bg"
+                                android:src="@drawable/baseline_favorite_24"
+                                android:contentDescription="@null"
+
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Yêu thích"
+                                android:textSize="12sp"
+                                android:textColor="#64748B"
+                                android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <ImageButton
+                                android:id="@+id/btnDowload"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/circular_button_bg"
+                                app:srcCompat="@drawable/baseline_file_download_24"
+                                android:contentDescription="@null"
+                                app:tint="#3B82F6"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tải xuống"
+                                android:textSize="12sp"
+                                android:textColor="#64748B"
+                                android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <ImageButton
+                                android:id="@+id/btnReport"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/circular_button_bg"
+                                app:srcCompat="@drawable/baseline_report_24"
+                                android:contentDescription="@null"
+                                app:tint="#3B82F6"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Báo cáo"
+                                android:textSize="12sp"
+                                android:textColor="#64748B"
+                                android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <ImageButton
+                                android:id="@+id/btnShare"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/circular_button_bg"
+                                app:srcCompat="@drawable/ic_share_24"
+                                android:contentDescription="@null"
+                                app:tint="#3B82F6"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Chia sẻ"
+                                android:textSize="12sp"
+                                android:textColor="#64748B"
+                                android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Episode List Section -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="#FFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
                         <TextView
-                            android:id="@+id/tvAverageRating"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="14sp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="-40dp"
-                            android:text="( 0 / 0 lượt )"
-                            android:textColor="#FFF" />
-                    </LinearLayout>
-                </LinearLayout>
+                            android:text="Danh sách tập phim"
+                            android:textSize="18sp"
+                            android:textColor="#1E3A8A"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="12dp"/>
 
-                <EditText
-                    android:id="@+id/commentInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Viết bình luận của bạn..."
-                    android:background="@drawable/text_title"
-                    android:textColor="#FFF"
-                    android:layout_marginBottom="8dp"
-                    android:drawableEnd="@drawable/baseline_send_24"
-                    android:drawablePadding="8dp" />
-                <!-- Comment List -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvComments"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rcvTapPhim"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Rating and Comments Section -->
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:scrollbars="vertical" />
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="#FFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/tvCommentHeader"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Đánh giá và Bình luận"
+                            android:textSize="18sp"
+                            android:textColor="#1E3A8A"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="12dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="16dp">
+
+                            <RatingBar
+                                android:id="@+id/ratingBar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:numStars="5"
+                                android:rating="0"
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:progressTint="#3B82F6"
+                                android:stepSize="1.0"/>
+
+                            <TextView
+                                android:id="@+id/tvAverageRating"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="( 0 / 0 lượt )"
+                                android:textColor="#64748B"/>
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            app:boxStrokeColor="#3B82F6"
+                            app:hintTextColor="#3B82F6">
+
+                            <EditText
+                                android:id="@+id/commentInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Viết bình luận của bạn..."
+                                android:padding="12dp"
+                                android:textColor="#1E3A8A"
+                                android:background="@drawable/comment_input_bg"
+                                android:drawableEnd="@drawable/baseline_send_24"
+                                android:drawableTint="#3B82F6"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvComments"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-
 </RelativeLayout>

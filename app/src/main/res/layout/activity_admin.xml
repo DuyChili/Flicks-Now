@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="#00405d"
     android:orientation="vertical"
-
+    android:id="@+id/main"
     tools:context=".activity.AdminActivity">
 
     <!-- Header Admin Section -->

@@ -11,6 +11,8 @@ import com.example.flicks_now.model.BinhLuanPhim;
 import com.example.flicks_now.databinding.ItemBinhluanphimBinding;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class BinhLuanPhimAdapter extends RecyclerView.Adapter<BinhLuanPhimAdapter.MovieViewHolder> {
@@ -47,7 +49,19 @@ public class BinhLuanPhimAdapter extends RecyclerView.Adapter<BinhLuanPhimAdapte
         holder.binding.tvTenNguoiDung.setText(binhLuanPhim.getUserName());
         holder.binding.tvBinhLuan.setText(binhLuanPhim.getCommentText());
         // Định dạng thời gian tùy theo yêu cầu
-        holder.binding.tvNgayBinhLuan.setText(DateFormat.getDateTimeInstance().format(binhLuanPhim.timestamp));
+        // Tạo Date từ timestamp
+        Date date = new Date(binhLuanPhim.timestamp);
+
+// Định dạng ngày tháng năm
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String ngayThangNam = dateFormat.format(date);
+
+// Định dạng giờ:phút:giây
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        String gioPhutGiay = timeFormat.format(date);
+
+        holder.binding.tvNgayBinhLuan.setText(ngayThangNam);
+        holder.binding.tvThoiGianBinhLuan.setText(gioPhutGiay);
     }
 
     @Override

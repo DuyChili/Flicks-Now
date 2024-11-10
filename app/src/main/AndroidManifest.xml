@@ -6,8 +6,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,8 +16,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Cddd2_nhom6"
+        android:theme="@style/Theme.flick_now"
         tools:targetApi="31">
+        <activity
+            android:name=".activity.MainActivity2"
+            android:exported="false" />
         <activity
             android:name=".activity.ThemPhimActivity"
             android:exported="true" />
@@ -74,7 +76,7 @@
             android:name=".activity.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity android:name=".activity.DSThongBaoActivity" />
         <activity android:name=".activity.QLThongBaoActivity" />
         <activity android:name=".activity.DangKyActivity" />
@@ -83,14 +85,17 @@
             android:exported="true" />
         <activity android:name=".activity.LichSuXemActivity" />
         <activity android:name=".activity.DanhSachYeuThichActivity" />
-        <activity android:name=".activity.CaiDatActivity"/>
-        <activity android:name=".activity.ChinhSuaThongTinActivity"/>
-        <activity android:name=".activity.ThongBaoActivity"/>
-        <activity android:name=".activity.QuanLyAPI" android:exported="true"/>
-        <activity android:name=".activity.TaiPhimActivity"
+        <activity android:name=".activity.CaiDatActivity" />
+        <activity android:name=".activity.ChinhSuaThongTinActivity" />
+        <activity android:name=".activity.ThongBaoActivity" />
+        <activity
+            android:name=".activity.QuanLyAPI"
+            android:exported="true" />
+        <activity
+            android:name=".activity.TaiPhimActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity android:name=".activity.XemPhimTaixuongActivity" />
         <activity android:name=".activity.HoTroActivity" />
     </application>

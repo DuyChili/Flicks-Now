@@ -22,7 +22,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         app:cornerRadius="15dp"
-        android:background="#F45A8F"
+        android:background="@drawable/header_gradient"
         app:elevation="0dp"/>
 
 </androidx.cardview.widget.CardView>

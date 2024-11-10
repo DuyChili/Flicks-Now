@@ -3,6 +3,8 @@ package com.example.flicks_now.model;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -126,9 +128,12 @@ public class DSPhimYeuThich {
                 // Nếu phim đã tồn tại, đổi màu nút thành đỏ
                 if (movieExists) {
                     binding.btnAddToFavorites.setImageResource(R.drawable.baseline_favorite_24_red);
+                    binding.btnAddToFavorites.setBackgroundResource(R.drawable.circular_button_bg);
+
                 } else {
                     // Nếu phim chưa tồn tại, để màu trắng
-                    binding.btnAddToFavorites.setImageResource(R.drawable.baseline_favorite_24);
+                    binding.btnAddToFavorites.setBackgroundResource(R.drawable.baseline_favorite_24);
+                    binding.btnAddToFavorites.setBackgroundResource(R.drawable.circular_button_bg);
                 }
             }
 
