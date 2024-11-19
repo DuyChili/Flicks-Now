@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FA"
+    android:orientation="vertical"
+    android:fillViewport="true">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#00405d"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    </androidx.appcompat.widget.Toolbar>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Logo container với background gradient -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="70dp"
+                app:cardElevation="8dp">
+
+                <ImageView
+                    android:id="@+id/imvLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/image"
+                    android:clipToOutline="true"
+                    android:contentDescription="Logo"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logo" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Tên ứng dụng -->
+            <TextView
+                android:id="@+id/tvAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:text="Flick Now"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#1E3A8A"
+                android:fontFamily="sans-serif-medium"/>
+
+            <!-- Phiên bản -->
+            <TextView
+                android:id="@+id/tvVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="Phiên bản 1.0.0"
+                android:textSize="16sp"
+                android:textColor="#64748B"/>
+
+            <!-- Card View cho phần giới thiệu -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF"
+                android:layout_marginHorizontal="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Giới thiệu"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#1E3A8A"
+                        android:layout_marginBottom="12dp"/>
+
+                    <TextView
+                        android:id="@+id/tvDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Flick Now là ứng dụng đặt vé xem phim thông minh, giúp bạn dễ dàng đặt vé và theo dõi các bộ phim mới nhất. Chúng tôi cam kết mang đến trải nghiệm đặt vé tốt nhất cho người dùng."
+                        android:textSize="16sp"
+                        android:lineSpacingExtra="6dp"
+                        android:textColor="#334155"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card View cho thông tin liên hệ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF"
+                android:layout_marginHorizontal="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Liên hệ với chúng tôi"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#1E3A8A"
+                        android:layout_marginBottom="12dp"/>
+
+                    <!-- Email Section -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/baseline_email_24"
+                            app:tint="#3B82F6" />
+
+                        <TextView
+                            android:id="@+id/tvEmail"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Email: flicknow78@gmail.com"
+                            android:textSize="16sp"
+                            android:textColor="#334155"
+                            android:layout_marginStart="12dp"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:textAllCaps="false"
+                            android:textSize="14sp"
+                            app:cornerRadius="20dp"
+                            android:paddingHorizontal="16dp"
+                            app:backgroundTint="#3B82F6"
+                            app:icon="@drawable/baseline_send_24"
+                            app:iconGravity="textEnd"
+                            app:iconTint="#FFFFFF"/>
+                    </LinearLayout>
+
+                    <!-- Phone Section -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_phone"
+                            app:tint="#3B82F6"/>
+
+                        <TextView
+                            android:id="@+id/tvPhone"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Điện thoại: (84) 848 478 888"
+                            android:textSize="16sp"
+                            android:textColor="#334155"
+                            android:layout_marginStart="12dp"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnCall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:textAllCaps="false"
+                            android:textSize="14sp"
+                            app:cornerRadius="20dp"
+                            android:paddingHorizontal="16dp"
+                            app:backgroundTint="#3B82F6"
+                            app:icon="@drawable/ic_phone"
+                            app:iconGravity="textEnd"
+                            app:iconTint="#FFFFFF"/>
+                    </LinearLayout>
+
+                    <!-- Website Section -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_web"
+                            app:tint="#3B82F6"/>
+
+                        <TextView
+                            android:id="@+id/tvWebsite"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Website: www.flicknow.com"
+                            android:textSize="16sp"
+                            android:textColor="#334155"
+                            android:layout_marginStart="12dp"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnVisit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Truy cập"
+                            android:textAllCaps="false"
+                            android:textSize="14sp"
+                            app:cornerRadius="20dp"
+                            android:paddingHorizontal="16dp"
+                            app:backgroundTint="#3B82F6"
+                            app:iconGravity="textEnd"
+                            app:iconTint="#FFFFFF"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

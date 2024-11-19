@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#696969">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <androidx.media3.ui.PlayerView
+            android:id="@+id/playerView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:resize_mode="fill"
+            android:background="#000">
+            <include layout="@layout/custom_layout" />
+        </androidx.media3.ui.PlayerView>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@id/playerView"
+                android:padding="5dp">
+
+                <!-- Favorite and Download Buttons -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="#708090"
+                    android:layout_gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/btnAddToFavorites"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/baseline_favorite_24"
+                        android:contentDescription="@null" />
+
+                    <ImageButton
+                        android:id="@+id/btnDowload"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@android:color/transparent"
+                        app:srcCompat="@drawable/baseline_file_download_24"
+                        android:contentDescription="@null"
+                        app:tint="#3b5998" />
+
+                    <ImageButton
+                        android:id="@+id/btnReport"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@android:color/transparent"
+                        app:srcCompat="@drawable/baseline_report_24"
+                        android:contentDescription="@null"
+                        app:tint="#3b5998" />
+
+                    <ImageButton
+                        android:id="@+id/btnShare"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@android:color/transparent"
+                        app:srcCompat="@drawable/ic_share_24"
+                        android:contentDescription="@null"
+                        app:tint="#3b5998" />
+                </LinearLayout>
+
+                <!-- Movie Title -->
+                <TextView
+                    android:id="@+id/tvMovieTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:paddingTop="5dp"
+                    android:background="@drawable/text_title"
+                    android:paddingBottom="5dp" />
+
+
+
+                <!-- Comment Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvCommentHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bình luận"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:padding="5dp" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:gravity="end"
+                        android:layout_marginVertical="2dp">
+
+                        <RatingBar
+                            android:id="@+id/ratingBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:numStars="5"
+                            android:progressTint="@color/color_your_rating"
+                            android:rating="0"
+                            android:layout_gravity="center_vertical"
+                            android:scaleX="0.5"
+                            android:scaleY="0.5"
+                            android:stepSize="1.0" />
+
+                        <TextView
+                            android:id="@+id/tvAverageRating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="-40dp"
+                            android:text="( 0 / 0 lượt )"
+                            android:textColor="#FFF" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/commentInputContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="13dp"
+                    app:cardElevation="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/commentInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@null"
+                                android:hint="Viết bình luận ở đây..."
+                                android:inputType="textMultiLine"
+                                android:maxLines="4"
+                                android:maxLength="200"
+                                android:minHeight="36dp"
+                                android:textColor="@color/text_primary"
+                                android:textColorHint="@color/text_secondary"
+                                android:textSize="14sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:orientation="horizontal">
+
+                                <ImageButton
+                                    android:id="@+id/btnEmoji"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_marginEnd="12dp"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:src="@drawable/ic_emoji"
+                                    app:tint="#FF9900"
+                                    android:contentDescription="Insert emoji" />
+
+                                <ImageButton
+                                    android:id="@+id/btnGif"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_marginEnd="12dp"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:src="@drawable/ic_gif"
+                                    app:tint="#FF9900"
+                                    android:contentDescription="Insert GIF" />
+
+                                <ImageButton
+                                    android:id="@+id/btnAttachment"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:src="@drawable/ic_attachment"
+                                    app:tint="#FF9900"
+                                    android:contentDescription="Add attachment" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnSend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginStart="12dp"
+                            android:backgroundTint="@color/primary"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:minWidth="0dp"
+                            android:paddingHorizontal="16dp"
+                            android:text="Gửi"
+                            android:textColor="@color/white"
+                            app:cornerRadius="20dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <!-- Comment List -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:scrollbars="vertical" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

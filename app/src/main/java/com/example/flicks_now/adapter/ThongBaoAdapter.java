@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.flicks_now.model.ThongBao;
 import com.example.flicks_now.R;
 import com.example.flicks_now.databinding.ItemThongbaoBinding;
+import com.example.flicks_now.model.ThongBao;
 
 import java.util.List;
 
@@ -42,7 +42,7 @@ public class ThongBaoAdapter extends RecyclerView.Adapter<ThongBaoAdapter.ThongB
         holder.binding.tvTitle.setText(thongBao.getTitle());
         holder.binding.tvTime.setText(thongBao.getTime());
         holder.binding.tvContent.setText(thongBao.getContent());
-        holder.binding.imgIcon.setImageResource(R.drawable.ic_notification); // Cài đặt icon tạm thời
+        holder.binding.imgIcon.setImageResource(R.drawable.baseline_message_24); // Cài đặt icon tạm thời
 
         /// Luu Position mới cho Holder
         final int pos = position;

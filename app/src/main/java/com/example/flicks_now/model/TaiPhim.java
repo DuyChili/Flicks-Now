@@ -9,12 +9,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
-
 import androidx.core.app.NotificationCompat;
-
-import com.example.flicks_now.api.ApiService;
 import com.example.flicks_now.R;
-
+import com.example.flicks_now.api.ApiService;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -27,7 +24,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -76,7 +72,7 @@ public class TaiPhim {
             if (notificationManager != null) {
                 notificationManager.createNotificationChannel(channel);
             } else {
-                Log.e("MovieDownloader", "NotificationManager is null");
+                Log.e("TaiPhim", "NotificationManager is null");
             }
         }
     }
@@ -87,8 +83,8 @@ public class TaiPhim {
             @Override
             public void onResponse(Call<ChiTietPhim> call, Response<ChiTietPhim> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    ChiTietPhim movieDetails = response.body();
-                    String posterUrl = movieDetails.getMovie().getPosterUrl();
+                    ChiTietPhim ChiTietPhims = response.body();
+                    String posterUrl = ChiTietPhims.getMovie().getPosterUrl();
                     Log.d("Poster URL", "Poster link: " + posterUrl);
                     // Tải poster
                     downloadPoster(posterUrl, movieName, () -> {

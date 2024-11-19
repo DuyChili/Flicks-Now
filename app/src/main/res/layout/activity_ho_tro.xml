@@ -1,127 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activity.HoTroActivity">
+    android:background="@color/white">
 
-    <!-- Nút quay lại và tiêu đề -->
-    <LinearLayout
-        android:padding="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:background="#F06292"
-        android:gravity="center_vertical">
-
-        <!-- Nút quay lại -->
-        <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_back"
-            android:contentDescription="@string/back"
-             />
-
-        <!-- Tiêu đề -->
-        <TextView
-            android:gravity="center"
-            android:id="@+id/title"
-            android:layout_weight="4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Hỗ trợ khác"
-            android:textSize="26sp"
-            android:textColor="@android:color/black" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
-    </LinearLayout>
-    <LinearLayout
-        android:padding="16dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8">
-        <!-- Mô tả vấn đề -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Họ Tên"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            android:layout_marginTop="16dp" />
-        <!-- Mã vé hỗ trợ -->
-        <EditText
-            android:id="@+id/inputTicketCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nhập họ tên"
-            android:background="@drawable/bg_edittext"
-            android:padding="16dp"
-            android:inputType="text"
-            android:textSize="16sp"
-            android:textColor="#000"
-            android:layout_marginTop="16dp" />
-
-        <!-- Mô tả vấn đề -->
-        <TextView
-            android:id="@+id/labelDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mô tả vấn đề"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            android:layout_marginTop="16dp" />
-
-        <EditText
-            android:id="@+id/inputDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mô tả ít nhất 6 kí tự"
-            android:background="@drawable/bg_edittext"
-            android:padding="16dp"
-            android:inputType="textMultiLine"
-            android:minLines="3"
-            android:maxLines="5"
-            android:layout_marginTop="8dp" />
-
-        <!-- Ảnh mô tả -->
-        <TextView
-            android:id="@+id/labelImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thêm hình ảnh mô tả vấn đề/lỗi để được hỗ trợ nhanh hơn"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            android:layout_marginTop="16dp" />
-
-        <ImageView
-            android:id="@+id/imgUpload"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/bg_image_placeholder"
-            android:src="@drawable/baseline_upload_file_24"
-            android:contentDescription="Upload Image" />
-    </LinearLayout>
-
-
-
-    <!-- Nút gửi yêu cầu -->
-    <Button
-        android:id="@+id/btnSubmit"
+    <!-- App Bar với hiệu ứng thu gọn -->
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gửi yêu cầu hỗ trợ"
-        android:textColor="#000"
-        android:backgroundTint="#F06292"
-        android:layout_marginBottom="40dp" />
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
 
-</LinearLayout>
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="@color/black">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:background="#00405d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="pin">
+
+                <!-- Đặt ImageButton bên trái -->
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_arrow_back_24"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="@color/white"
+                    android:layout_gravity="start" />
+
+                <!-- TextView với width là match_parent và gravity là center -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Trung tâm Hỗ trợ"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Nội dung chính -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Card chứa form -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#1F1F1F">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Email -->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Email"
+                    app:boxStrokeColor="@color/white"
+                    app:hintTextColor="@color/pink"
+                    android:textColorHint="#9E9E9E">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputTicketCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/black"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Mô tả -->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Mô tả chi tiết"
+                    app:boxStrokeColor="@color/white"
+                    app:hintTextColor="@color/pink"
+                    android:textColorHint="#9E9E9E">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:minLines="4"
+                        android:gravity="top"
+                        android:textColor="@color/black"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Đính kèm ảnh -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đính kèm ảnh chụp màn hình"
+                    android:textColor="#9E9E9E"
+                    android:layout_marginTop="24dp"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/uploadImageCard"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#3D3D3D">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/imgUpload"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_drop_up_24"
+                            app:tint="#9E9E9E"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tải ảnh lên"
+                            android:textColor="#9E9E9E"
+                            android:textSize="12sp"
+                            android:layout_marginTop="8dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Nút gửi -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Gửi báo cáo"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginTop="24dp"
+            app:cornerRadius="8dp"
+            android:backgroundTint="#00405d"/>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

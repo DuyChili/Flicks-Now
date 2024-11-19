@@ -11,8 +11,8 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 import com.example.flicks_now.activity.ChiTietPhimActivity;
-import com.example.flicks_now.model.PhimAPiOphim;
 import com.example.flicks_now.databinding.ItemBannerBinding;
+import com.example.flicks_now.model.PhimAPiOphim;
 
 import java.util.List;
 

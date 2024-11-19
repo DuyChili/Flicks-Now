@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.flicks_now.activity.ChiTietPhimActivity;
-import com.example.flicks_now.model.DSPhimAPiOphim;
 import com.example.flicks_now.databinding.ItemDsphimBinding;
+import com.example.flicks_now.model.DSPhimAPiOphim;
 
 import java.util.List;
 
@@ -41,13 +41,16 @@ public class DSPhimAdapterOphim extends RecyclerView.Adapter<DSPhimAdapterOphim.
 
     @Override
     public void onBindViewHolder(@NonNull SeriesViewHolder holder, int position) {
+        if (seriesList == null || position >= seriesList.size()) {
+            return; // Bỏ qua nếu danh sách rỗng hoặc vị trí không hợp lệ
+        }
         DSPhimAPiOphim series = seriesList.get(position);
         holder.binding.movieTitle.setText(series.getName());
         holder.binding.movieYear.setText(String.valueOf(series.getYear()));
 
         // Sử dụng Glide để load hình ảnh
         Glide.with(context)  // Sử dụng context đã được cung cấp
-                .load(series.getPosterUrl())
+                .load(series.getThumbUrl())
                 .into(holder.binding.moviePoster);
 
         /// Luu Position mới cho Holder
@@ -69,14 +72,6 @@ public class DSPhimAdapterOphim extends RecyclerView.Adapter<DSPhimAdapterOphim.
             super(binding.getRoot());
             this.binding = binding;
 
-
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    recyclerViewItemClickListener.onItemClick(view, position);
-//                }
-//            });
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -91,9 +86,12 @@ public class DSPhimAdapterOphim extends RecyclerView.Adapter<DSPhimAdapterOphim.
 
     }
     public void updateData(List<DSPhimAPiOphim> newData) {
-        seriesList.clear(); // Xóa dữ liệu cũ
-        seriesList.addAll(newData); // Thêm dữ liệu mới
-        notifyDataSetChanged(); // Thông báo adapter đã có dữ liệu mới
+        if (newData == null) {
+            return; // Không làm gì nếu dữ liệu mới là null
+        }
+        seriesList.clear();
+        seriesList.addAll(newData);
+        notifyDataSetChanged();
     }
 
     // Interface để xử lý sự kiện click

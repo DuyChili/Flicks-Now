@@ -2,20 +2,22 @@ package com.example.flicks_now.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.flicks_now.adapter.ThongBaoAdapter;
+import com.example.flicks_now.databinding.ActivityDsthongBaoBinding;
 
 import com.example.flicks_now.model.ThongBao;
-import com.example.flicks_now.databinding.ActivityDsthongBaoBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,27 +32,32 @@ public class DSThongBaoActivity extends AppCompatActivity implements ThongBaoAda
     private ThongBaoAdapter thongBaoAdapter;
     private List<ThongBao> thongBaoList = new ArrayList<>();
     private DatabaseReference mDatabase;
+    private boolean doubleBackToExitPressedOnce = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         binding = ActivityDsthongBaoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //Goi chuc nang nhan 2 lan de thoat
+        getOnBackPressedDispatcher().addCallback(this, callback);
         // Khởi tạo Firebase Realtime Database
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        binding.btnBack.setOnClickListener(v -> onBackPressed());
         binding.recyclerViewApis.setLayoutManager(new LinearLayoutManager(this));
         thongBaoAdapter = new ThongBaoAdapter(DSThongBaoActivity.this,thongBaoList);
         binding.recyclerViewApis.setAdapter(thongBaoAdapter);
-        binding.ivThem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DSThongBaoActivity.this, QLThongBaoActivity.class);
-                startActivity(intent);
-            }
-        });
         getThongBaoFromDatabase();
+        setSupportActionBar(binding.toolbar);
+        // Kiểm tra xem ActionBar đã được khởi tạo chưa
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Quản lý thông báo"); // Đặt tên mới cho Toolbar
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Hiện biểu tượng trở về
+        }
+        binding.ivThemThongBao.setOnClickListener(v -> {
+            Intent intent = new Intent(DSThongBaoActivity.this, QLThongBaoActivity.class);
+            startActivity(intent);
+        });
     }
     private void getThongBaoFromDatabase() {
         DatabaseReference thongBaoRef = FirebaseDatabase.getInstance().getReference().child("ThongBao");
@@ -97,7 +104,21 @@ public class DSThongBaoActivity extends AppCompatActivity implements ThongBaoAda
     }
 
 
+    // Thiết lập OnBackPressedDispatcher
+    OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+            if (doubleBackToExitPressedOnce) {
+                finishAffinity();  // Thoát ứng dụng
+                return;
+            }
+            doubleBackToExitPressedOnce = true;
+            Toast.makeText(getApplicationContext(), "Nhấn thoát thêm một lần nữa", Toast.LENGTH_SHORT).show();
 
+            // Reset lại cờ sau 2 giây
+            new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
+        }
+    };
     @Override
     protected void onResume() {
         super.onResume();
@@ -113,5 +134,15 @@ public class DSThongBaoActivity extends AppCompatActivity implements ThongBaoAda
     @Override
     public void onItemClick(View view, ThongBao thongBao) {
         hienDialogThongBao(thongBao);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            Intent intent = new Intent(this, AdminActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

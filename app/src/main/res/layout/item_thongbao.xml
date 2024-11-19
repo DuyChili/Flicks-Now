@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="10dp"
     app:cardCornerRadius="15dp"
-    android:backgroundTint="#00405D"
+    android:backgroundTint="#3f729b"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:background="#3f729b"
         android:orientation="horizontal">
         <!-- Icon thông báo -->
         <ImageView

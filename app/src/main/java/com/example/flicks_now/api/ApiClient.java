@@ -73,5 +73,6 @@ public class ApiClient {
         baseUrl = newBaseUrl;
         retrofit = null; // Đặt lại retrofit để sử dụng baseUrl mới
     }
+
 }
 

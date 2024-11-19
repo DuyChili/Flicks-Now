@@ -108,11 +108,11 @@
                             <LinearLayout style="@style/InfoRowStyle">
                                 <TextView
                                     style="@style/LabelStyle"
-                                    android:text="Tác giả: "/>
+                                    android:text="Tác Giả: "/>
                                 <TextView
                                     android:id="@+id/textViewDirector"
                                     style="@style/ValueStyle"
-                                    android:text="Duy"/>
+                                    android:text=""/>
                             </LinearLayout>
 
                             <LinearLayout style="@style/InfoRowStyle">

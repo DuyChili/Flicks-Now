@@ -1,8 +1,46 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.flick_now" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Flicks_now" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Primary brand color -->
+        <item name="colorPrimary">#64FFDA</item>
+        <item name="colorPrimaryVariant">#0A192F</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">#112240</item>
+        <item name="colorSecondaryVariant">#8892B0</item>
+        <item name="colorOnSecondary">#CCD6F6</item>
+
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+    <!-- styles.xml -->
+    <style name="CircleImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="SpinnerTheme" parent="Theme.AppCompat.DayNight">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorHint">#FFFFFF</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+    <style name="SpinnerStyle" parent="Theme.AppCompat.DayNight">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorHint">#FFFFFF</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:popupBackground">#3C3C3C</item>
+    </style>
+    <style name="LoginDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+    <style name="Theme.Flicks_now" parent="Base.Theme.Flicks_now" />
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color -->
         <item name="colorPrimary">#64FFDA</item>
         <item name="colorPrimaryVariant">#0A192F</item>
@@ -19,25 +57,6 @@
         <!-- Typography -->
 <!--        <item name="android:fontFamily">@font/google_sans</item>-->
     </style>
-
-    <!-- styles.xml -->
-    <style name="CircleImageView">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">50%</item>
-    </style>
-    <style name="SpinnerTheme">
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
-    </style>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-    </style>
-
-    <style name="Theme.flick_now" parent="Base.Theme.flick_now" />
 
     <!-- Common styles for movie detail -->
     <style name="InfoRowStyle">

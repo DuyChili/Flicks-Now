@@ -12,10 +12,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import com.example.flicks_now.adapter.TaiPhimAdapter;
-import com.example.flicks_now.model.MovieItem;
 import com.example.flicks_now.R;
+import com.example.flicks_now.adapter.TaiPhimAdapter;
 import com.example.flicks_now.databinding.ActivityDownLoadBinding;
+import com.example.flicks_now.model.MovieItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;

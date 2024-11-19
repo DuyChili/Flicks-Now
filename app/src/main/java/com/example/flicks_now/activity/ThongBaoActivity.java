@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.flicks_now.adapter.ThongBaoAdapter;
-import com.example.flicks_now.model.ThongBao;
 import com.example.flicks_now.databinding.ActivityThongBaoBinding;
+import com.example.flicks_now.model.ThongBao;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

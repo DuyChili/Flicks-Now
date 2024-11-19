@@ -1,12 +1,9 @@
 package com.example.flicks_now.model;
 import android.os.Parcel;
-import android.os.Parcelable;
-
-import androidx.annotation.NonNull;
 
 import java.util.List;
 
-public class DSPhim implements Parcelable {
+public class DSPhim implements DSPhimAPI {
     private String _id;
     private String name;
     private String slug;
@@ -23,6 +20,7 @@ public class DSPhim implements Parcelable {
     private List<Category> category;
     private List<Country> country;
 
+
     protected DSPhim(Parcel in) {
         _id = in.readString();
         name = in.readString();
@@ -36,18 +34,6 @@ public class DSPhim implements Parcelable {
         year = in.readInt();
     }
 
-    public static final Creator<DSPhim> CREATOR = new Creator<DSPhim>() {
-        @Override
-        public DSPhim createFromParcel(Parcel in) {
-            return new DSPhim(in);
-        }
-
-        @Override
-        public DSPhim[] newArray(int size) {
-            return new DSPhim[size];
-        }
-    };
-
     public String getSlug() {
         return slug;
     }
@@ -58,26 +44,6 @@ public class DSPhim implements Parcelable {
 
     public List<Country> getCountry() {
         return country;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(@NonNull Parcel parcel, int i) {
-
-        parcel.writeString(_id);
-        parcel.writeString(name);
-        parcel.writeString(slug);
-        parcel.writeString(origin_name);
-        parcel.writeString(poster_url);
-        parcel.writeString(thumb_url);
-        parcel.writeString(episode_current);
-        parcel.writeString(quality);
-        parcel.writeString(lang);
-        parcel.writeInt(year);
     }
 
     public static class Modified {

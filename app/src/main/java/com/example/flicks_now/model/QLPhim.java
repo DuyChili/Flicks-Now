@@ -15,21 +15,15 @@ public class QLPhim {
     private String dienVien; // Diễn viên
     private String quocGia; // Quốc gia
     private float rating; // Đánh giá
-    private int id_kieuPhim; // ID kiểu phim
     private String ngayThemPhim; // Ngày thêm phim
     private String ngayCapNhat; // Ngày cập nhật phim
-    private String movieUrl; // URL video phim
-    private String slug;
-
-    public String getSlug() {
-        return slug;
-    }
+    private String movie_url; // URL video phim
 
     // Constructor có tham số
     public QLPhim(String id_movie, String name, String content, String poster_url, String thumb_url,
                 String goi, String time, String year, String tacGia, String theLoai, String dienVien,
-                String quocGia, float rating, int id_kieuPhim, String ngayThemPhim, String ngayCapNhat,
-                String movieUrl) {
+                String quocGia, float rating, String ngayThemPhim, String ngayCapNhat,
+                String movie_url) {
         this.id_movie = id_movie;
         this.name = name;
         this.content = content;
@@ -43,10 +37,9 @@ public class QLPhim {
         this.dienVien = dienVien;
         this.quocGia = quocGia;
         this.rating = rating;
-        this.id_kieuPhim = id_kieuPhim;
         this.ngayThemPhim = ngayThemPhim;
         this.ngayCapNhat = ngayCapNhat;
-        this.movieUrl = movieUrl; // Thêm movieUrl vào constructor
+        this.movie_url = movie_url; // Thêm movieUrl vào constructor
     }
 
     // Constructor không tham số
@@ -64,10 +57,9 @@ public class QLPhim {
         this.dienVien = "";
         this.quocGia = "";
         this.rating = 0.0f;
-        this.id_kieuPhim = 0;
         this.ngayThemPhim = "";
         this.ngayCapNhat = "";
-        this.movieUrl = ""; // Khởi tạo movieUrl
+        this.movie_url = ""; // Khởi tạo movieUrl
     }
 
     // Getter và Setter cho các thuộc tính
@@ -175,14 +167,6 @@ public class QLPhim {
         this.rating = rating;
     }
 
-    public int getId_kieuPhim() {
-        return id_kieuPhim;
-    }
-
-    public void setId_kieuPhim(int id_kieuPhim) {
-        this.id_kieuPhim = id_kieuPhim;
-    }
-
     public String getNgayThemPhim() {
         return ngayThemPhim;
     }
@@ -199,12 +183,12 @@ public class QLPhim {
         this.ngayCapNhat = ngayCapNhat;
     }
 
-    public String getMovieUrl() {
-        return movieUrl; // Getter cho movieUrl
+    public String getMovie_url() {
+        return movie_url; // Getter cho movieUrl
     }
 
-    public void setMovieUrl(String movieUrl) {
-        this.movieUrl = movieUrl; // Setter cho movieUrl
+    public void setMovie_url(String movie_url) {
+        this.movie_url = movie_url; // Setter cho movieUrl
     }
 }
 

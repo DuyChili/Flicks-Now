@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#00405d">
+
+    <!-- Hình ảnh logo của API nằm sát lề trái -->
+    <ImageView
+        android:id="@+id/imgQuocGia"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@+id/tvQuocGiaName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/imgQuocGia"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:text="Tên quốc gia"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <!-- Nút xóa nằm sát lề phải -->
+    <ImageView
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/baseline_delete_24" />
+
+    <!-- Nút sửa nằm sát nút xóa, bên trái nút xóa -->
+    <ImageView
+        android:id="@+id/btnEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toStartOf="@id/btnDelete"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_edit_24" />
+
+    <!-- EditText để nhập thông tin sửa -->
+    <EditText
+        android:id="@+id/editQuocGia"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Nhập tên quốc gia"
+        android:layout_below="@id/imgQuocGia"
+        android:padding="8dp"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+    <!-- Nút để lưu thay đổi (Đưa nút lưu xuống dưới 2 icon Sửa và Xóa) -->
+    <EditText
+        android:id="@+id/editLink"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgQuocGia"
+        android:layout_marginTop="50dp"
+        android:hint="Nhập link"
+        android:padding="8dp"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:text="Lưu"
+        android:layout_below="@id/btnEdit"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

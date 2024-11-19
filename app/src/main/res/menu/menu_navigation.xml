@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/itemQLPhim"
+        android:title="Quản Lý Phim"
+        android:icon="@drawable/film"/>
+    <item
+        android:id="@+id/itemQLDoanhThu"
+        android:title="Quản Lý Doanh Thu"
+        android:icon="@drawable/graph"/>
+    <item
+        android:id="@+id/itemQLUser"
+        android:title="Quản Lý User"
+        android:icon="@drawable/user"/>
+    <item
+        android:id="@+id/itemQLTheLoai"
+        android:title="Quản Lý Thể Loại"
+        android:icon="@drawable/theloai"/>
+    <item
+        android:id="@+id/itemQLQuocGia"
+        android:title="Quản Lý Quốc Gia"
+        android:icon="@drawable/globe"/>
+    <item
+        android:id="@+id/itemQLThongBao"
+        android:title="Quản Lý Thông Báo"
+        android:icon="@drawable/tainghe"/>
+    <item
+        android:id="@+id/itemHoTro"
+        android:title="Thông Tin Hỗ Trợ"
+        android:icon="@drawable/tainghe"/>
+    <item
+        android:id="@+id/itemQLApi"
+        android:title="Quản Lý Api"
+        android:icon="@drawable/api"/>
+    <item
+        android:id="@+id/itemthat"
+        android:title="Thoát"
+        android:icon="@drawable/exit"/>
+</menu>

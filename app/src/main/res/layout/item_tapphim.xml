@@ -16,13 +16,13 @@
         android:text="Tập 001"
         android:textStyle="bold"
         android:textSize="12sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         app:cornerRadius="15dp"
-        android:background="@drawable/header_gradient"
+        android:background="@drawable/banner_background"
         app:elevation="0dp"/>
 
 </androidx.cardview.widget.CardView>

@@ -9,10 +9,10 @@ import android.view.animation.AnimationUtils;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.flicks_now.model.User;
-import com.example.flicks_now.model.YeuCau;
 import com.example.flicks_now.R;
 import com.example.flicks_now.databinding.ItemYeuCauBinding;
+import com.example.flicks_now.model.User;
+import com.example.flicks_now.model.YeuCau;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

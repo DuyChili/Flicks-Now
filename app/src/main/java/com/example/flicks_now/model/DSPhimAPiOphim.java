@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DSPhimAPiOphim implements Parcelable {
+public class DSPhimAPiOphim implements DSPhimAPI {
     private String _id;
     private String name;
     private String slug;
@@ -119,43 +119,6 @@ public class DSPhimAPiOphim implements Parcelable {
         country = new ArrayList<>();
         in.readList(country, Country.class.getClassLoader());
     }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(_id);
-        dest.writeString(name);
-        dest.writeString(slug);
-        dest.writeString(origin_name);
-        dest.writeString(poster_url);
-        dest.writeString(thumb_url);
-        dest.writeString(episode_current);
-        dest.writeString(quality);
-        dest.writeString(lang);
-        dest.writeInt(year);
-        dest.writeByte((byte) (chieurap ? 1 : 0));
-        dest.writeByte((byte) (sub_docquyen ? 1 : 0));
-        dest.writeString(time);
-        dest.writeParcelable(modified, flags);
-        dest.writeList(category);
-        dest.writeList(country);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<DSPhimAPiOphim> CREATOR = new Creator<DSPhimAPiOphim>() {
-        @Override
-        public DSPhimAPiOphim createFromParcel(Parcel in) {
-            return new DSPhimAPiOphim(in);
-        }
-
-        @Override
-        public DSPhimAPiOphim[] newArray(int size) {
-            return new DSPhimAPiOphim[size];
-        }
-    };
 
     // Nested classes for Modified, Category, and Country (same as before)
     public static class Modified implements Parcelable {

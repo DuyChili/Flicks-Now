@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.flicks_now.model.User;
 import com.example.flicks_now.databinding.ItemUserThongbaoBinding;
+import com.example.flicks_now.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

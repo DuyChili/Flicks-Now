@@ -6,43 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#1A1A1A"
     tools:context=".activity.QLYeuCauActivity">
 
     <!-- Nút quay lại và tiêu đề -->
-    <LinearLayout
-        android:background="#FFA0A0"
-        android:padding="16dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <!-- Nút quay lại -->
-        <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_back"
-            android:contentDescription="@string/back" />
-
-        <!-- Tiêu đề -->
-        <TextView
-            android:gravity="center"
-            android:id="@+id/title"
-            android:layout_weight="10"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Danh Sách Yêu Cầu"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/pink" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-    </LinearLayout>
+        android:layout_height="60dp"
+        android:background="#1E1E1E"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    </androidx.appcompat.widget.Toolbar>
 
     <!-- Thanh tìm kiếm và trạng thái -->
     <LinearLayout

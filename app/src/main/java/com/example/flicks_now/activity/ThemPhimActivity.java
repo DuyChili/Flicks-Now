@@ -1,5 +1,6 @@
 package com.example.flicks_now.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
@@ -38,6 +38,7 @@ public class ThemPhimActivity extends AppCompatActivity {
     private ArrayList<String> selectedGenresList = new ArrayList<>();
     private HashMap<String, String> goiMap = new HashMap<>();
     private DatabaseReference database;
+    ArrayList<String> quocGiaList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,22 +47,26 @@ public class ThemPhimActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // Lấy dữ liệu từ Firebase
-        layDuLieuGoi();
         // xu ly hien thi ảnh Poster
         xulyHienThiAnh();
+        layDuLieuQuocGia();
         layDuLieuTheLoai();
+
 
         // Nhận ID phim từ Intent
         String idMovie = getIntent().getStringExtra("id_movie");
         if (idMovie != null) {
             // Nếu ID phim không null, thực hiện chức năng cập nhật
             layDuLieuPhim(idMovie);
+            binding.tvThemPhim.setText("Chi Tiết Phim");
             binding.submitButton.setText("Cập nhật");
             binding.submitButton.setOnClickListener(v -> themPhimVaoFirebase());
         } else {
             // Nếu không, đây là chức năng thêm phim
             binding.submitButton.setOnClickListener(v -> themPhimVaoFirebase());
         }
+
+
 // Khởi tạo danh sách thể loại và các biến liên quan
         genres = getResources().getStringArray(R.array.genre_array); // Lấy danh sách thể loại từ resources
         selectedGenres = new boolean[genres.length]; // Khởi tạo mảng trạng thái cho các thể loại
@@ -71,6 +76,14 @@ public class ThemPhimActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 resetForm();
+            }
+        });
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a= new Intent(ThemPhimActivity.this, QLPhimActivity.class);
+                startActivity(a);
+                finish();
             }
         });
 
@@ -111,44 +124,9 @@ public class ThemPhimActivity extends AppCompatActivity {
         }
     }
 
-    private void layDuLieuGoi() {
-        DatabaseReference goiRef = FirebaseDatabase.getInstance().getReference("Goi");
-        goiRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<String> goiList = new ArrayList<>();
-                goiList.add("Chọn Gói"); // Thêm tùy chọn mặc định đầu tiên
-
-                goiMap.clear(); // Đảm bảo HashMap được xóa trước khi thêm mới
-
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    // Lấy giá trị của cột "type" và "id" trong bảng Goi
-                    String goiType = snapshot.child("Type").getValue(String.class);
-                    Long goiIdLong = snapshot.child("id").getValue(Long.class);
-
-                    if (goiType != null && goiIdLong != null) {
-                        String goiId = String.valueOf(goiIdLong); // Chuyển Long thành String
-                        goiList.add(goiType); // Thêm type vào danh sách
-                        goiMap.put(goiType, goiId); // Lưu ID tương ứng vào HashMap
-                    }
-                }
-
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(ThemPhimActivity.this, android.R.layout.simple_spinner_item, goiList);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                binding.goiSpinner.setAdapter(adapter);
-
-                // Đặt giá trị mặc định
-                binding.goiSpinner.setSelection(0);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ThemPhimActivity.this, "Lỗi khi tải dữ liệu gói", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     private void layDuLieuTheLoai() {
+        binding.progressBar.setVisibility(View.VISIBLE);
         DatabaseReference theLoaiRef = FirebaseDatabase.getInstance().getReference("theLoai");
         theLoaiRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -167,8 +145,8 @@ public class ThemPhimActivity extends AppCompatActivity {
                     }
                 }
 
-                Button selectGenresButton = findViewById(R.id.select_genres_button);
-                TextView selectedGenresText = findViewById(R.id.selected_genres_text);
+                Button selectGenresButton = findViewById(R.id.btnAddGenre);
+                TextView selectedGenresText = findViewById(R.id.selectedGenresText);
 
                 selectGenresButton.setOnClickListener(v -> {
                     AlertDialog.Builder builder = new AlertDialog.Builder(ThemPhimActivity.this);
@@ -190,6 +168,8 @@ public class ThemPhimActivity extends AppCompatActivity {
                             .setNegativeButton("Hủy", (dialog, which) -> dialog.dismiss())
                             .show();
                 });
+
+                binding.progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -199,65 +179,62 @@ public class ThemPhimActivity extends AppCompatActivity {
         });
     }
 
-    private void showGenreDialog() {
-        String selectedText = binding.selectedGenresText.getText().toString();
-        String[] selectedGenresArray = selectedText.isEmpty() ? new String[0] : selectedText.split(", ");
-        selectedGenresList.clear();
-        Arrays.fill(selectedGenres, false);
+    private void layDuLieuQuocGia() {
+        DatabaseReference quocGiaRef = FirebaseDatabase.getInstance().getReference("quocGia");
+        quocGiaRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-        for (int i = 0; i < genres.length; i++) {
-            for (String selectedGenre : selectedGenresArray) {
-                if (genres[i].equals(selectedGenre.trim())) {
-                    selectedGenres[i] = true;
-                    selectedGenresList.add(String.valueOf(i));
-                    break;
+                quocGiaList.add("Chọn quốc gia"); // Thêm tùy chọn mặc định đầu tiên
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    // Lấy giá trị của cột "name" trong bảng quocGia
+                    String quocGiaName = snapshot.child("name").getValue(String.class);
+                    if (quocGiaName != null) {
+                        quocGiaList.add(quocGiaName); // Thêm name vào danh sách
+                    }
                 }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(ThemPhimActivity.this, android.R.layout.simple_spinner_item, quocGiaList);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                binding.spinnerCountry.setAdapter(adapter);
+
+                // Đặt giá trị mặc định
+                binding.spinnerCountry.setSelection(0);
             }
-        }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Chọn thể loại");
-        builder.setMultiChoiceItems(genres, selectedGenres, (dialog, which, isChecked) -> {
-            if (isChecked) {
-                if (!selectedGenresList.contains(String.valueOf(which))) {
-                    selectedGenresList.add(String.valueOf(which));
-                }
-            } else {
-                selectedGenresList.remove(String.valueOf(which));
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(ThemPhimActivity.this, "Lỗi khi tải dữ liệu quốc gia", Toast.LENGTH_SHORT).show();
             }
         });
-
-        builder.setPositiveButton("OK", (dialog, which) -> {
-            StringBuilder selectedGenresText = new StringBuilder();
-            for (int i = 0; i < selectedGenresList.size(); i++) {
-                selectedGenresText.append(genres[Integer.parseInt(selectedGenresList.get(i))]);
-                if (i != selectedGenresList.size() - 1) {
-                    selectedGenresText.append(", ");
-                }
-            }
-            binding.selectedGenresText.setText(selectedGenresText.toString());
-        });
-
-        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
-        builder.create().show();
     }
 
     private void themPhimVaoFirebase() {
+
         // Lấy giá trị từ các trường nhập liệu
-        String tenPhim = binding.title.getText().toString().trim();
-        String moTa = binding.description.getText().toString().trim();
-        String dienVien = binding.cast.getText().toString().trim();
-        String tacGia = binding.actor.getText().toString().trim();
-        String thoiLuong = binding.duration.getText().toString().trim();
-        String namPhatHanh = binding.releaseYear.getText().toString().trim();
+        String tenPhim = binding.edtTitle.getText().toString().trim();
+        String moTa = binding.edtDescription.getText().toString().trim();
+        String dienVien = binding.edtCast.getText().toString().trim();
+        String tacGia = binding.edtDirector.getText().toString().trim();
+        String thoiLuong = binding.edtDuration.getText().toString().trim();
+        String namPhatHanh = binding.edtYear.getText().toString().trim();
         String posterUrl = binding.posterUrl.getText().toString().trim();
         String thumbUrl = binding.thumbUrl.getText().toString().trim();
         String movieUrl = binding.movieUrl.getText().toString().trim();
         // Lấy giá trị từ Spinner
-        String goi = binding.goiSpinner.getSelectedItem().toString();
-        String goiId = goiMap.get(goi); // Lấy ID từ HashMap
+
+        String goi ;
+        if (binding.radioFree.isChecked() == true){
+            goi = "0";
+        }
+        else {
+            goi = "1";
+        }
+
+
         // Lấy giá trị từ Spinner
-        String quocGia = binding.countrySpinner.getSelectedItem().toString();
+        String quocGia = binding.spinnerCountry.getSelectedItem().toString();
 
         // Lấy thể loại từ TextView (đã được chọn từ dialog)
         String theLoai = binding.selectedGenresText.getText().toString().replace("Thể loại đã chọn: ", "").trim();
@@ -266,16 +243,16 @@ public class ThemPhimActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(tenPhim) || TextUtils.isEmpty(moTa) || TextUtils.isEmpty(dienVien) ||
                 TextUtils.isEmpty(tacGia) || TextUtils.isEmpty(thoiLuong) || TextUtils.isEmpty(namPhatHanh) ||
                 TextUtils.isEmpty(posterUrl) || TextUtils.isEmpty(thumbUrl) || TextUtils.isEmpty(movieUrl) ||
-                goi.equals("Chọn Gói") || quocGia.equals("Chọn quốc gia") || theLoai.isEmpty()) {
+                quocGia.equals("Chọn quốc gia") || theLoai.isEmpty() || binding.radioGroupType.getCheckedRadioButtonId() == -1 ) {
 
             Toast.makeText(ThemPhimActivity.this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             return;
         }
         // Kiểm tra xem ID có hợp lệ không
-        if (goiId == null) {
-            Toast.makeText(ThemPhimActivity.this, "Vui lòng chọn một gói hợp lệ", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        if (goiId == null) {
+//            Toast.makeText(ThemPhimActivity.this, "Vui lòng chọn một gói hợp lệ", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
         // Lấy ngày hiện tại dưới dạng dd/MM/yyyy
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String ngayHienTai = dateFormat.format(Calendar.getInstance().getTime());
@@ -287,7 +264,7 @@ public class ThemPhimActivity extends AppCompatActivity {
         movieData.put("poster_url", posterUrl);
         movieData.put("thumb_url", thumbUrl);
         movieData.put("movie_url", movieUrl);
-        movieData.put("goi", goiId); // Lưu ID gói vào dữ liệu phim
+        movieData.put("goi", goi); // Lưu ID gói vào dữ liệu phim
         movieData.put("time", thoiLuong);
         movieData.put("year", namPhatHanh);
         movieData.put("tacGia", tacGia);
@@ -295,7 +272,6 @@ public class ThemPhimActivity extends AppCompatActivity {
         movieData.put("dienVien", dienVien);
         movieData.put("quocGia", quocGia);
         movieData.put("rating", 0);  // Đặt giá trị mặc định
-        movieData.put("id_kieuPhim", 0);  // Đặt giá trị mặc định
 
         // Thêm cột ngày thêm phim và ngày cập nhật với giá trị ngày hiện tại
         movieData.put("ngayThemPhim", ngayHienTai);
@@ -315,7 +291,9 @@ public class ThemPhimActivity extends AppCompatActivity {
                     moviesRef.child(idMovie).setValue(movieData).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(ThemPhimActivity.this, "Cập nhật phim thành công!", Toast.LENGTH_SHORT).show();
-                            resetForm();
+                            Intent a = new Intent(ThemPhimActivity.this,QLPhimActivity.class);
+                            startActivity(a);
+                            finish();
                         } else {
                             Toast.makeText(ThemPhimActivity.this, "Cập nhật phim thất bại!", Toast.LENGTH_SHORT).show();
                         }
@@ -346,21 +324,21 @@ public class ThemPhimActivity extends AppCompatActivity {
 
     private void resetForm() {
         // Đặt lại các trường nhập liệu
-        binding.title.setText("");
-        binding.description.setText("");
-        binding.cast.setText("");
-        binding.actor.setText("");
-        binding.duration.setText("");
-        binding.releaseYear.setText("");
+        binding.edtTitle.setText("");
+        binding.edtDescription.setText("");
+        binding.edtCast.setText("");
+        binding.edtDirector.setText("");
+        binding.edtDuration.setText("");
+        binding.edtYear.setText("");
         binding.posterUrl.setText("");
         binding.thumbUrl.setText("");
         binding.movieUrl.setText("");
 
-        // Đặt lại spinner "Gói" về mặc định
-        binding.goiSpinner.setSelection(0);  // Vị trí 0 là "Chọn Gói"
+        binding.radioFree.setChecked(false);
+        binding.radioPremium.setChecked(false);
 
         // Đặt lại spinner "Quốc gia" về mặc định
-        binding.countrySpinner.setSelection(0);  // Vị trí 0 là "Chọn quốc gia"
+        binding.spinnerCountry.setSelection(0);  // Vị trí 0 là "Chọn quốc gia"
 
         // Đặt lại TextView chọn thể loại
         binding.selectedGenresText.setText("Bạn chưa chọn thể loại nào");
@@ -371,8 +349,8 @@ public class ThemPhimActivity extends AppCompatActivity {
     }
 
     private void layDuLieuPhim(String idMovie) {
+        binding.progressBar.setVisibility(View.VISIBLE);
         DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Movies").child(idMovie);
-        DatabaseReference goi = FirebaseDatabase.getInstance().getReference("Goi").child(idMovie);
         movieRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -390,24 +368,39 @@ public class ThemPhimActivity extends AppCompatActivity {
                     String goiId = dataSnapshot.child("goi").getValue(String.class); // Lấy goiId
                     String quocGia = dataSnapshot.child("quocGia").getValue(String.class);
                     String theLoai = dataSnapshot.child("theLoai").getValue(String.class);
+                    String idMovie = dataSnapshot.child("id_movie").getValue(String.class);
+
 
                     // Hiển thị thông tin lên màn hình
-                    binding.title.setText(tenPhim);
-                    binding.description.setText(moTa);
-                    binding.cast.setText(dienVien);
-                    binding.actor.setText(tacGia);
-                    binding.duration.setText(thoiLuong);
-                    binding.releaseYear.setText(namPhatHanh);
+                    binding.edtTitle.setText(tenPhim);
+                    binding.edtDescription.setText(moTa);
+                    binding.edtCast.setText(dienVien);
+                    binding.edtDirector.setText(tacGia);
+                    binding.edtDuration.setText(thoiLuong);
+                    binding.edtYear.setText(namPhatHanh);
                     binding.posterUrl.setText(posterUrl);
                     binding.thumbUrl.setText(thumbUrl);
                     binding.movieUrl.setText(movieUrl);
 
                     // Đặt vị trí cho Spinner dựa trên ID
 //
-                    binding.goiSpinner.setSelection(getSpinnerPosition(binding.goiSpinner, goiId));
-                    // cho them vao firebase
-                    binding.countrySpinner.setSelection(getSpinnerPosition(binding.countrySpinner, quocGia));
+                    if (goiId.equals("0")) {
+                        binding.radioFree.setChecked(true);
+                        binding.radioPremium.setChecked(false);
+                    } else {
+                        binding.radioFree.setChecked(false);
+                        binding.radioPremium.setChecked(true);
+                    }
                     binding.selectedGenresText.setText("Thể loại đã chọn: " + theLoai);
+
+                    for (int i = 0; i < quocGiaList.size(); i++) {
+                        String country = quocGiaList.get(i);
+                        if (country.equals(quocGia)){
+                            binding.spinnerCountry.setSelection(i);
+                            binding.progressBar.setVisibility(View.GONE);
+                            break;
+                        }
+                    }
                 }
             }
 
@@ -417,6 +410,7 @@ public class ThemPhimActivity extends AppCompatActivity {
             }
         });
     }
+
 
 
     private int getSpinnerPosition(Spinner spinner, String id) {

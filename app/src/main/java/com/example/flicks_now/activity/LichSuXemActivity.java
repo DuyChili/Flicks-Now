@@ -3,21 +3,24 @@ package com.example.flicks_now.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.flicks_now.R;
 import com.example.flicks_now.adapter.LichSuAdapter;
 import com.example.flicks_now.api.ApiClient;
 import com.example.flicks_now.api.ApiService;
-import com.example.flicks_now.model.ChiTietPhim;
 import com.example.flicks_now.databinding.ActivityLichSuXemBinding;
+import com.example.flicks_now.model.ChiTietPhim;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -48,7 +51,6 @@ public class LichSuXemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         binding = ActivityLichSuXemBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -67,6 +69,10 @@ public class LichSuXemActivity extends AppCompatActivity {
         setControl();
 
         hienThiLichSuPhim();
+        swipeRefreshLayout = binding.swipeRefreshLayout; // Khởi tạo SwipeRefreshLayout
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            hienThiLichSuPhim();
+        });
         // Thiết lập ActionBar và DrawerLayout
         setSupportActionBar(binding.toolbar);
         // Kiểm tra xem ActionBar đã được khởi tạo chưa
@@ -74,10 +80,6 @@ public class LichSuXemActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Lịch sử đã xem"); // Đặt tên mới cho Toolbar
             getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Hiện biểu tượng trở về
         }
-        swipeRefreshLayout = binding.swipeRefreshLayout; // Khởi tạo SwipeRefreshLayout
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            hienThiLichSuPhim();
-        });
     }
 
     public void setControl() {
@@ -233,6 +235,139 @@ public class LichSuXemActivity extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_timkiem, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                if (currentUser == null) {
+                    Toast.makeText(LichSuXemActivity.this, "Lỗi: Người dùng không xác định", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+
+                usersRef.child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            String idUser = dataSnapshot.child("id_user").getValue(String.class);
+
+                            if (idUser == null) {
+                                Toast.makeText(LichSuXemActivity.this, "Lỗi: id_user không tồn tại", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+
+                            lichSuXemRef.orderByChild("id_user").equalTo(idUser).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    boolean found = false;
+
+                                    // Lưu trữ một danh sách phim tìm thấy tạm thời
+                                    List<ChiTietPhim.MovieItem> searchResults = new ArrayList<>();
+
+                                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                        String movieSlug = snapshot.child("slug").getValue(String.class);
+                                        if (movieSlug != null) {
+                                            // Gọi hàm để lấy thông tin chi tiết phim
+                                            chiTietPhimTimKiem(movieSlug, query, searchResults); // Truyền danh sách tạm thời
+                                            found = true;
+                                        }
+                                    }
+
+                                    if (!found) {
+                                        Toast.makeText(LichSuXemActivity.this, "Không tìm thấy kết quả", Toast.LENGTH_SHORT).show();
+                                    }
+                                    searchView.clearFocus();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    Toast.makeText(LichSuXemActivity.this, "Lỗi khi tìm kiếm", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            Toast.makeText(LichSuXemActivity.this, "Người dùng không tồn tại trong cơ sở dữ liệu", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(LichSuXemActivity.this, "Lỗi khi lấy thông tin người dùng", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                searchItem.collapseActionView();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        return true;
+    }
+
+    private void chiTietPhimTimKiem(String slug, String query, List<ChiTietPhim.MovieItem> searchResults) {
+        Call<ChiTietPhim> call = apiService.getChiTietPhim(slug);
+        call.enqueue(new Callback<ChiTietPhim>() {
+            @Override
+            public void onResponse(Call<ChiTietPhim> call, Response<ChiTietPhim> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    ChiTietPhim movieDetail = response.body();
+                    ChiTietPhim.MovieItem movieItem = new ChiTietPhim.MovieItem();
+                    movieItem.setName(movieDetail.getMovie().getName());
+                    movieItem.setPosterUrl(movieDetail.getMovie().getPosterUrl());
+                    movieItem.setSlug(slug); // Set slug for navigation
+
+                    // Kiểm tra xem tên phim có chứa truy vấn không
+                    if (movieItem.getName().toLowerCase().contains(query.toLowerCase())) {
+                        // Thêm phim tìm thấy vào đầu danh sách tìm kiếm
+                        searchResults.add(0, movieItem);
+
+                        // Cập nhật danh sách chính
+                        watchedMoviesList.add(0, movieItem); // Thêm vào đầu danh sách chính
+                        lichSuAdapter.notifyDataSetChanged(); // Cập nhật RecyclerView
+                    }
+                } else {
+                    Log.e("LichSuXemActivity", "Failed to fetch movie details for slug: " + slug);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ChiTietPhim> call, Throwable t) {
+                Log.e("LichSuXemActivity", "Error fetching movie details", t);
+            }
+        });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_search) {
+            // Xử lý sự kiện khi nhấn vào tìm kiếm
+            Toast.makeText(this, "Bạn muốn tìm kiếm gì", Toast.LENGTH_SHORT).show();
+
+            return true;
+        } else if (id == android.R.id.home) {
+            // Chuyển đến màn hình profile
+            Intent intent = new Intent(this, CaNhanActivity.class); // Thay ProfileActivity bằng tên Activity profile của bạn
+            startActivity(intent);
+            return true;
+        }else if (id == R.id.nav_thongbao) {
+            Intent intent = new Intent(this,ThongBaoActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onResume() {

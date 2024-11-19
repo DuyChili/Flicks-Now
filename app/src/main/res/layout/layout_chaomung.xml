@@ -11,6 +11,7 @@
         android:id="@+id/ivHinh"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginBottom="150dp"
         android:src="@drawable/logo"
         app:shapeAppearanceOverlay="@style/hinh" />
 </LinearLayout>

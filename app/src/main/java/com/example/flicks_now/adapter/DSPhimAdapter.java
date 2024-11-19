@@ -10,8 +10,8 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import com.example.flicks_now.activity.ChiTietPhimActivity;
-import com.example.flicks_now.model.DSPhim;
 import com.example.flicks_now.databinding.ItemPhimBinding;
+import com.example.flicks_now.model.DSPhim;
 
 public class DSPhimAdapter extends RecyclerView.Adapter<DSPhimAdapter.DSPhimViewHolder>{
     private Activity context;  // Thêm biến Activity context
@@ -27,6 +27,12 @@ public class DSPhimAdapter extends RecyclerView.Adapter<DSPhimAdapter.DSPhimView
     // Setter cho listener
     public void setRecyclerViewItemClickListener(OnRecyclerViewItemClickListener recyclerViewItemClickListener) {
         DSPhimAdapter.recyclerViewItemClickListener = recyclerViewItemClickListener;
+    }
+    // Thêm phương thức để cập nhật dữ liệu mới
+    public void updateData(List<DSPhim> newMovieList) {
+        this.dsPhims.clear(); // Xóa dữ liệu cũ
+        this.dsPhims.addAll(newMovieList); // Thêm dữ liệu mới
+        notifyDataSetChanged(); // Thông báo adapter cập nhật
     }
 
     @NonNull

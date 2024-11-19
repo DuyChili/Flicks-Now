@@ -21,23 +21,26 @@
     <color name="red">#FF0000</color>
     <color name="orange">#FFA500</color>
     <color name="blue">#00405D</color>
-        <!-- Màu chủ đạo -->
-        <color name="background_main">#F5F7FA</color>
-        <color name="card_background">#FFFFFF</color>
+    <!-- Màu chủ đạo -->
+    <color name="background_main">#F5F7FA</color>
+    <color name="card_background">#FFFFFF</color>
 
-        <!-- Màu gradient -->
-        <color name="gradient_start">#6366F1</color>
-        <color name="gradient_end">#8B5CF6</color>
+    <!-- Màu gradient -->
+    <color name="gradient_start">#6366F1</color>
+    <color name="gradient_end">#8B5CF6</color>
 
-        <!-- Màu nút -->
-        <color name="button_primary">#6366F1</color>
+    <!-- Màu nút -->
+    <color name="button_primary">#6366F1</color>
 
-        <!-- Màu text -->
-        <color name="text_primary">#1F2937</color>
-        <color name="text_secondary">#6B7280</color>
-        <color name="text_button">#FFFFFF</color>
+    <!-- Màu text -->
+    <color name="text_primary">#1F2937</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_button">#FFFFFF</color>
+    <color name="primary_color">#6200EE</color>
+    <color name="background_color">#F5F7FA</color>
     <color name="chip_background_color">#E0E0E0</color>
 
+    <color name="primary">#1E88E5</color>
 
     <!-- Màu nền của gói user-->
     <color name="normal_bg">#2D2D2D</color>
@@ -65,6 +68,12 @@
     <color name="status_completed_start">#2ECC71</color>
     <color name="status_completed_end">#27AE60</color>
 
+    <color name="colorPrimary1">#FF4081</color>
+    <color name="colorBackground">#1E1E1E</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorTextSecondary">#BDBDBD</color>
+    <color name="colorAccent">#FF4081</color>
 
-    
+    <color name="colorUnread">#FFE0B2</color> <!-- Ví dụ màu cho tin chưa đọc -->
+    <color name="colorRead">#E0E0E0</color> <!-- Ví dụ màu cho tin đã đọc -->
 </resources>

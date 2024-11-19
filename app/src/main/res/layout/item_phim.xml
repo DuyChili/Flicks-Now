@@ -6,44 +6,67 @@
     app:cardCornerRadius="15dp"
     android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp"
-    android:backgroundTint="#00405D"
-    android:elevation="4dp">
+    android:backgroundTint="#142F4B"
+    android:elevation="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical"
-        android:padding="8dp">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/moviePoster"
-            android:layout_width="130dp"
+            android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/movieTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:text="Movie Name"
             android:textStyle="bold"
             android:textSize="16sp"
+            android:textColor="#64FFDA"
             android:paddingTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
             android:gravity="center"
-
+            android:maxLines="2"
+            android:ellipsize="end"
             />
 
 
         <TextView
             android:id="@+id/movie_year"
-            android:text="Year"
-            android:textSize="14sp"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:text="Year"
+            android:textSize="14sp"
+            android:textColor="#8892B0"
             android:textAlignment="center"
+            android:gravity="center"
 
 
             />
     </LinearLayout>
+        <!-- Badge VIP -->
+        <TextView
+            android:id="@+id/vipBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VIP"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="@drawable/vip_badge_background"
+            android:padding="4dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

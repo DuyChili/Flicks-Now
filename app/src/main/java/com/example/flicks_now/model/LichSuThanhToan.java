@@ -5,6 +5,7 @@ public class LichSuThanhToan {
     private String idUser;
     private String noiDung;
     private String ngayXacNhan;
+    private String ngayThanhToan;
     private long soTien;
     private String ngayHetHan;
 
@@ -12,13 +13,22 @@ public class LichSuThanhToan {
 
     }
 
-    public LichSuThanhToan(String idThanhToan, String idUser, String noiDung, String ngayXacNhan, long soTien, String ngayHetHan) {
+    public LichSuThanhToan(String idThanhToan, String idUser, String noiDung,String ngayThanhToan, String ngayXacNhan, long soTien, String ngayHetHan) {
         this.idThanhToan = idThanhToan;
         this.idUser = idUser;
         this.noiDung = noiDung;
+        this.ngayThanhToan = ngayThanhToan;
         this.ngayXacNhan = ngayXacNhan;
         this.soTien = soTien;
         this.ngayHetHan = ngayHetHan;
+    }
+
+    public String getNgayThanhToan() {
+        return ngayThanhToan;
+    }
+
+    public void setNgayThanhToan(String ngayThanhToan) {
+        this.ngayThanhToan = ngayThanhToan;
     }
 
     public String getIdThanhToan() {

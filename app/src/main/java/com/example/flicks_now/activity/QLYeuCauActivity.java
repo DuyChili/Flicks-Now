@@ -3,18 +3,23 @@ package com.example.flicks_now.activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.example.flicks_now.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,11 +31,10 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 import com.example.flicks_now.adapter.YeuCauAdapter;
-import com.example.flicks_now.model.LichSuThanhToan;
-import com.example.flicks_now.model.YeuCau;
-import com.example.flicks_now.R;
 import com.example.flicks_now.databinding.ActivityQlyeuCauBinding;
 import com.example.flicks_now.databinding.DialogYeuCauDetailBinding;
+import com.example.flicks_now.model.LichSuThanhToan;
+import com.example.flicks_now.model.YeuCau;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,13 +46,15 @@ public class QLYeuCauActivity extends AppCompatActivity {
     private YeuCauAdapter adapter;
     private List<YeuCau> yeuCauList;
     private List<YeuCau> LocDanhSach;
+    private boolean doubleBackToExitPressedOnce = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         binding =ActivityQlyeuCauBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //Goi chuc nang nhan 2 lan de thoat
+        getOnBackPressedDispatcher().addCallback(this, callback);
         // Khởi tạo danh sách yêu cầu và adapter
         yeuCauList = new ArrayList<>();
         LocDanhSach = new ArrayList<>();
@@ -95,15 +101,14 @@ public class QLYeuCauActivity extends AppCompatActivity {
             // Gọi phương thức lọc khi RadioButton thay đổi
             locTheoSpinnerVaRadio(dateFilter, statusFilter);
         });
+        // Thiết lập ActionBar và DrawerLayout
+        setSupportActionBar(binding.toolbar);
+        // Kiểm tra xem ActionBar đã được khởi tạo chưa
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Danh Sách Yêu Cầu");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Hiện biểu tượng trở về
 
-        binding.btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(QLYeuCauActivity.this, QLUserActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        }
     }
     // Hàm kết hợp để áp dụng cả hai bộ lọc
     private void locTheoSpinnerVaRadio(String dateRange, String statusFilter) {
@@ -304,6 +309,7 @@ public class QLYeuCauActivity extends AppCompatActivity {
                 idThanhToan,
                 yeuCau.getIdUser(),
                 yeuCau.getContent(),
+                yeuCau.getPaymentDate(),
                 ngayXacNhan,
                 yeuCau.getAmount(),
                 ngayHetHan
@@ -337,5 +343,41 @@ public class QLYeuCauActivity extends AppCompatActivity {
             e.printStackTrace();
             return null;
         }
+    }
+    // Thiết lập OnBackPressedDispatcher
+    OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+            if (doubleBackToExitPressedOnce) {
+                finishAffinity();  // Thoát ứng dụng
+                return;
+            }
+            doubleBackToExitPressedOnce = true;
+            Toast.makeText(getApplicationContext(), "Nhấn thoát thêm một lần nữa", Toast.LENGTH_SHORT).show();
+
+            // Reset lại cờ sau 2 giây
+            new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
+        }
+    };
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            Intent intent = new Intent(this, QLUserActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

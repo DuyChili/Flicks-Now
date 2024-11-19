@@ -15,12 +15,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.flicks_now.R;
 import com.example.flicks_now.adapter.QLPhimAdapter;
+import com.example.flicks_now.databinding.ActivityQlphimBinding;
 import com.example.flicks_now.model.Goi;
 import com.example.flicks_now.model.KieuPhim;
 import com.example.flicks_now.model.QLPhim;
-import com.example.flicks_now.R;
-import com.example.flicks_now.databinding.ActivityQlphimBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -49,7 +49,7 @@ public class QLPhimActivity extends AppCompatActivity {
         binding = ActivityQlphimBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        fetchGoiFromFirebase();
+
         // Hiển thị tất cả phim khi mở ứng dụng
         fetchMoviesFromFirebase("All");
         updateSelectedButton(binding.btnChonTatCa);
@@ -57,7 +57,7 @@ public class QLPhimActivity extends AppCompatActivity {
 
         // Cài đặt RecyclerView
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new QLPhimAdapter(this, phimList, kieuPhimList, goiList, selectedCount -> {
+        adapter = new QLPhimAdapter(this, phimList, goiList, selectedCount -> {
             if (selectedCount > 0) {
                 binding.deleteIcon.setVisibility(View.VISIBLE); // Hiển thị icon xóa nếu có phim được chọn
             } else {
@@ -79,6 +79,15 @@ public class QLPhimActivity extends AppCompatActivity {
     }
 
     private void xulyButton() {
+
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QLPhimActivity.this, AdminActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         binding.btnAddPhim.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,7 +156,7 @@ public class QLPhimActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedGoi = parent.getItemAtPosition(position).toString();
                 // Gọi lại fetchMoviesFromFirebase() để tải lại dữ liệu phim từ Firebase
-                fetchMoviesFromFirebase(selectedGoi);  // Truyền loại gói phim vào đây
+                fetchMoviesFromFirebase(selectedGoi);// Truyền loại gói phim vào đây
             }
 
             @Override
@@ -187,11 +196,15 @@ public class QLPhimActivity extends AppCompatActivity {
         // Cập nhật lại giao diện
         adapter.getSelectedMovies().clear(); // Xóa danh sách phim đã chọn
         adapter.notifyDataSetChanged(); // Cập nhật RecyclerView
-        binding.deleteIcon.setVisibility(View.GONE); // Ẩn icon xóa sau khi xóa
+        binding.deleteIcon.setVisibility(View.GONE);
         Toast.makeText(this, "Đã xóa phim", Toast.LENGTH_SHORT).show();
     }
 
     private void fetchMoviesFromFirebase(String goiType) {
+
+        binding.progressBar.setVisibility(View.VISIBLE);
+        fetchGoiFromFirebase();
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Movies");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -214,6 +227,8 @@ public class QLPhimActivity extends AppCompatActivity {
                 }
                 String a = binding.spinnerTimGoi.getSelectedItem().toString().trim();
                 filterMoviesByGoi(a, phimList);  // Lọc theo gói sau khi lọc theo ngày
+                binding.progressBar.setVisibility(View.GONE);
+
             }
 
             @Override
@@ -301,6 +316,7 @@ public class QLPhimActivity extends AppCompatActivity {
                         goiList.add(goi);
                     }
                 }
+                fetchGoiFromFirebase();
             }
 
             @Override

@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.flicks_now.model.ChiTietPhim;
 import com.example.flicks_now.databinding.ItemTapphimBinding;
+import com.example.flicks_now.model.ChiTietPhim;
 
 import java.util.List;
 

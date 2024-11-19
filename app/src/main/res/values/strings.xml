@@ -1,12 +1,23 @@
 <resources>
     <string name="app_name">Flicks Now</string>
-
+    <string name="default_web_client_id">129940903783-31belmfbmtbesasntcm100rdrh45cmpq.apps.googleusercontent.com</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="favorite_button_label">Yêu thích</string>
     <string name="fullscreen">fullscreen</string>
     <string name="episode">Tập phim</string>
 
+    <string name="settings">Cài Đặt</string>
+    <string name="account_settings">Thiết Lập Tài Khoản</string>
+    <string name="change_password">Đổi Mật Khẩu</string>
+    <string name="dark_mode">Chế Độ Tối</string>
+    <string name="username">Xin chào</string>
+    <string name="about">Về chúng tôi</string>
+    <string name="Help">Trợ giúp</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="login">Đăng Nhập</string>
+    <string name="admin">Admin</string>
+    <string name="profile_image">Ảnh đại diện</string>
     <string-array name="genre_array">
         <item>Thể loại</item> <!-- Giá trị mặc định -->
         <item>Hành động</item>

@@ -3,131 +3,133 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="30dp"
-    android:background="#222222"
-    >
+    android:background="#696969">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#00405d"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <!-- Back button -->
-    <ImageButton
-        android:id="@+id/btnThoat"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/ic_back"
-        android:layout_gravity="start"
-        android:padding="5dp"
-        app:tint="#FFFFFF" />
+    </androidx.appcompat.widget.Toolbar>
 
     <!-- Avatar -->
-    <ImageView
-        android:id="@+id/ivHinhanh"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:src="@drawable/baseline_person_24"
-        android:background="@drawable/border_radiu_caidat"
-        android:scaleType="centerCrop"
-        android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
-
-    <!-- Edit button -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thay đổi mật khẩu"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FF4081"
-        android:layout_gravity="center"
-        android:layout_marginBottom="20dp"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="671dp"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <ImageView
+            android:id="@+id/ivHinhanh"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border_radiu_caidat"
+            android:padding="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/baseline_person_24" />
+
+        <!-- Edit button -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mật khẩu hiện tại: "
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="20sp"/>
-        <EditText
-            android:id="@+id/edtMkCu"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#FF4081"
+            android:text="Thay đổi mật khẩu"
+            android:textColor="#FFFFFF" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textColor="#000000"
-            android:background="@drawable/rounded_search_bar"
-            android:drawableEnd="@drawable/baseline_visibility_off_24"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"/>
-    </LinearLayout>
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mật khẩu mới: "
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="20sp"/>
-        <EditText
-            android:id="@+id/edtMkMoi"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mật khẩu hiện tại: "
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtMkCu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rounded_search_bar"
+                android:drawableEnd="@drawable/baseline_visibility_off_24"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textColor="#000000"
-            android:background="@drawable/rounded_search_bar"
-            android:drawableEnd="@drawable/baseline_visibility_off_24"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nhập lại mật khẩu:"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="20sp"/>
-        <EditText
-            android:id="@+id/edtMkMoi2"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mật khẩu mới: "
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtMkMoi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rounded_search_bar"
+                android:drawableEnd="@drawable/baseline_visibility_off_24"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textColor="#000000"
-            android:background="@drawable/rounded_search_bar"
-            android:drawableEnd="@drawable/baseline_visibility_off_24"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhập lại mật khẩu:"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtMkMoi2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rounded_search_bar"
+                android:drawableEnd="@drawable/baseline_visibility_off_24"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="#000000" />
 
 
+            <!-- Save and Cancel buttons -->
 
-
-    <!-- Save and Cancel buttons -->
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="horizontal">
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnLuu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:layout_marginEnd="0dp"
             android:backgroundTint="#FF4081"
+            android:layout_marginTop="70dp"
             android:text="Lưu thay đổi"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 </LinearLayout>

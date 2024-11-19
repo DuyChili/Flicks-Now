@@ -8,72 +8,21 @@
     android:orientation="vertical"
     android:background="#4D4D4D"
     tools:context=".activity.DSThongBaoActivity">
-    <!-- Nút quay lại và tiêu đề -->
-    <LinearLayout
-        android:background="#d155bc"
-        android:padding="16dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <!-- Nút quay lại -->
+        android:layout_height="60dp"
+        android:background="@drawable/header_gradient"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_back"
-            android:contentDescription="@string/back"
-            />
-
-        <!-- Tiêu đề -->
-        <TextView
-            android:gravity="center"
-            android:id="@+id/title"
-            android:layout_weight="4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Quản lý thông báo"
-            android:textSize="26sp"
-            android:textColor="@android:color/black" />
-        <ImageView
-            android:id="@+id/ivThem"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:id="@+id/ivThemThongBao"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginRight="16dp"
             android:src="@drawable/baseline_add_24"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
-        android:background="@drawable/rounded_search_bar"
-        android:padding="5dp"
-        android:gravity="center_vertical">
-        <!-- Icon tìm kiếm -->
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/search"
-            android:clickable="true"
-            android:padding="8dp" />
-
-        <!-- EditText cho tìm kiếm -->
-        <EditText
-            android:id="@+id/searchEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Tìm kiếm Thông báo"
-            android:background="@null"
-            android:textColorHint="#ffffff"
-            android:textColor="#ffffff"
-            android:padding="8dp"
-            android:inputType="text" />
-    </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"

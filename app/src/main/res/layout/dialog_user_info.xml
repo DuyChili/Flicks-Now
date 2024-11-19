@@ -105,11 +105,13 @@
 
             <Spinner
                 android:id="@+id/spinnerUserType"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
                 android:entries="@array/user_types"
-                android:theme="@style/SpinnerTheme"/>
+                android:padding="5dp"
+                android:spinnerMode="dropdown"
+                android:popupTheme="@style/SpinnerTheme"/>
+
         </LinearLayout>
 
         <LinearLayout

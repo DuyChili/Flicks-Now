@@ -55,7 +55,9 @@
             android:backgroundTint="#CCCCCC"
             android:hint=" Họ Tên"
             android:inputType="text"
+            android:textColor="#000"
             android:padding="10dp"
+            android:drawablePadding="10dp"
             android:drawableStart="@drawable/baseline_people_24"/>
         <EditText
             android:id="@+id/edtEmail"
@@ -65,8 +67,10 @@
             android:background="@drawable/edittext_border"
             android:backgroundTint="#CCCCCC"
             android:hint=" Email"
+            android:textColor="#000"
             android:inputType="textEmailAddress"
             android:padding="10dp"
+            android:drawablePadding="10dp"
             android:drawableStart="@drawable/baseline_email_24"/>
 
 
@@ -79,6 +83,8 @@
             android:background="@drawable/edittext_border"
             android:backgroundTint="#CCCCCC"
             android:hint=" Mật Khẩu"
+            android:drawablePadding="10dp"
+            android:textColor="#000"
             android:drawableStart="@drawable/baseline_lock_outline_24"
             android:drawableEnd="@drawable/baseline_visibility_off_24"
             android:inputType="textPassword"
@@ -92,10 +98,12 @@
             android:background="@drawable/edittext_border"
             android:backgroundTint="#CCCCCC"
             android:hint=" Nhập Lại Mật Khẩu"
+            android:textColor="#000"
             android:drawableStart="@drawable/baseline_lock_outline_24"
             android:drawableEnd="@drawable/baseline_visibility_off_24"
             android:inputType="textPassword"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:drawablePadding="10dp"/>
 
         <Button
             android:id="@+id/btnDangKy"

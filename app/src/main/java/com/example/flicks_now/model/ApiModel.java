@@ -1,6 +1,7 @@
 package com.example.flicks_now.model;
 
 public class ApiModel {
+    private String id;
     private String name;
     private String url;
 
@@ -8,9 +9,14 @@ public class ApiModel {
         // Constructor mặc định
     }
 
-    public ApiModel(String name, String url) {
+    public ApiModel(String id,String name, String url) {
+        this.id = id;
         this.name = name;
         this.url = url;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {

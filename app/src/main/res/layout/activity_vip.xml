@@ -2,10 +2,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/meBlack"
+    android:background="#0A192F"
     tools:context=".activity.VipActivity">
 
     <!-- Phần giao diện chính của ứng dụng -->
@@ -18,7 +19,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#212121"
+            android:background="#0A192F"
             android:padding="16dp">
 
             <LinearLayout
@@ -173,8 +174,17 @@
 
                     </LinearLayout>
                 </LinearLayout>
-
+                <com.google.android.gms.ads.AdView
+                    android:id="@+id/adView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:visibility="visible"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="ca-app-pub-3940256099942544/6300978111" />
             </LinearLayout>
+
         </ScrollView>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -184,9 +194,12 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
         android:layout_gravity="bottom"
-        app:menu="@menu/bottom_nav_menu"
+        android:background="#142F4B"
+        android:elevation="8dp"
+        android:padding="8dp"
+        app:itemIconTint="@color/bottom_nav_colors"
+        app:itemTextColor="@color/bottom_nav_colors"
         app:labelVisibilityMode="selected"
-        android:background="@color/bottom_nav_unselected"/>
+        app:menu="@menu/bottom_nav_menu"/>
 </FrameLayout>

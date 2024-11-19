@@ -1,19 +1,22 @@
 package com.example.flicks_now.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.flicks_now.adapter.NguoiDungAdapter;
+import com.example.flicks_now.databinding.ActivityQlThongBaoBinding;
 import com.example.flicks_now.model.ThongBao;
 import com.example.flicks_now.model.User;
-import com.example.flicks_now.databinding.ActivityQlThongBaoBinding;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,17 +38,16 @@ public class QLThongBaoActivity extends AppCompatActivity {
     private String idUser;
     private DatabaseReference thongBaoRef;
     boolean trangthai = false;
-
-
+    private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         binding = ActivityQlThongBaoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.btnBack.setOnClickListener(v -> onBackPressed());
 
+        //Goi chuc nang nhan 2 lan de thoat
+        getOnBackPressedDispatcher().addCallback(this, callback);
 
         // Khởi tạo Firebase Realtime Database
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -59,6 +61,12 @@ public class QLThongBaoActivity extends AppCompatActivity {
         // Khởi tạo Firebase Realtime Database
         thongBaoRef = FirebaseDatabase.getInstance().getReference().child("ThongBao");
         listenForNotifications();
+        setSupportActionBar(binding.toolbar);
+        // Kiểm tra xem ActionBar đã được khởi tạo chưa
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Quản lý thông báo"); // Đặt tên mới cho Toolbar
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Hiện biểu tượng trở về
+        }
     }
 
 
@@ -164,6 +172,21 @@ public class QLThongBaoActivity extends AppCompatActivity {
 
         snackbar.show();
     }
+    // Thiết lập OnBackPressedDispatcher
+    OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+            if (doubleBackToExitPressedOnce) {
+                finishAffinity();  // Thoát ứng dụng
+                return;
+            }
+            doubleBackToExitPressedOnce = true;
+            Toast.makeText(getApplicationContext(), "Nhấn thoát thêm một lần nữa", Toast.LENGTH_SHORT).show();
+
+            // Reset lại cờ sau 2 giây
+            new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
+        }
+    };
 
     @Override
     protected void onResume() {
@@ -175,5 +198,15 @@ public class QLThongBaoActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);  // Tắt giữ màn hình sáng khi dừng hoạt động
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            Intent intent = new Intent(this, AdminActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

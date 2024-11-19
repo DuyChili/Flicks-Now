@@ -1,18 +1,22 @@
 package com.example.flicks_now.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.flicks_now.R;
 
+import com.example.flicks_now.databinding.ActivityQlHoTroBinding;
 import com.example.flicks_now.model.HoTro;
 import com.example.flicks_now.model.ThongBao;
-import com.example.flicks_now.R;
-import com.example.flicks_now.databinding.ActivityQlHoTroBinding;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,6 +31,8 @@ public class QLHoTroActivity extends AppCompatActivity {
     private String title;
     private String time;
     private String content;
+    private boolean doubleBackToExitPressedOnce = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +40,15 @@ public class QLHoTroActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         binding = ActivityQlHoTroBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
+// Thiết lập ActionBar và DrawerLayout
+        setSupportActionBar(binding.toolbar);
+        // Kiểm tra xem ActionBar đã được khởi tạo chưa
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Thông Tin Hỗ Trợ"); // Đặt tên mới cho Toolbar
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Hiện biểu tượng trở về
+        }
+        //Goi chuc nang nhan 2 lan de thoat
+        getOnBackPressedDispatcher().addCallback(this, callback);
         // Nhận dữ liệu từ Intent
         title = getIntent().getStringExtra("title");
         time = getIntent().getStringExtra("time");
@@ -53,7 +66,6 @@ public class QLHoTroActivity extends AppCompatActivity {
                 .error(R.drawable.ic_notification)
                 .into(binding.ivHinhanh);
 
-        binding.btnBack.setOnClickListener(v -> onBackPressed());
         binding.btnSaveChanges.setOnClickListener(v -> sendHoTro(id_user));
     }
 
@@ -105,6 +117,21 @@ public class QLHoTroActivity extends AppCompatActivity {
                     }
                 });
     }
+    // Thiết lập OnBackPressedDispatcher
+    OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+            if (doubleBackToExitPressedOnce) {
+                finishAffinity();  // Thoát ứng dụng
+                return;
+            }
+            doubleBackToExitPressedOnce = true;
+            Toast.makeText(getApplicationContext(), "Nhấn thoát thêm một lần nữa", Toast.LENGTH_SHORT).show();
+
+            // Reset lại cờ sau 2 giây
+            new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
+        }
+    };
 
     @Override
     protected void onResume() {
@@ -116,5 +143,15 @@ public class QLHoTroActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);  // Tắt giữ màn hình sáng khi dừng hoạt động
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            Intent intent = new Intent(this, AdminActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

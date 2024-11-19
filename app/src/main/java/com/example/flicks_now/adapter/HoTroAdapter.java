@@ -8,10 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.flicks_now.activity.QLHoTroActivity;
-import com.example.flicks_now.model.HoTro;
 import com.example.flicks_now.R;
+import com.example.flicks_now.activity.QLHoTroActivity;
 import com.example.flicks_now.databinding.ItemHotroBinding;
+import com.example.flicks_now.model.HoTro;
 
 import java.util.List;
 

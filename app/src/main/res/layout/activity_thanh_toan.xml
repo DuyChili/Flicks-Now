@@ -2,8 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
-
+    android:background="#1A1A1A">
+    <!-- Nút quay lại và tiêu đề -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#00405d"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    </androidx.appcompat.widget.Toolbar>
     <!-- ScrollView chứa nội dung chính -->
     <ScrollView
         android:layout_width="match_parent"
@@ -14,20 +22,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
             android:orientation="vertical">
-
-            <!-- Title -->
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thanh toán"
-                android:textColor="#FFFFFF"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:paddingBottom="16dp" />
 
             <!-- QR Code -->
             <ImageView
@@ -133,6 +129,7 @@
         android:layout_alignParentBottom="true"
         android:text="Đã thanh toán"
         android:textSize="16sp"
+        android:layout_marginBottom="20dp"
         android:textColor="#FFFFFF"
         android:backgroundTint="#FF00FF"
         android:padding="12dp" />

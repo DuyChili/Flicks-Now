@@ -2,67 +2,73 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#696969">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFF">
 
     <!-- Header Layout -->
-    <LinearLayout
-        android:id="@+id/headerSection"
+    <!-- Nút quay lại và tiêu đề -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#333333"
-        android:padding="10dp">
+        android:layout_height="60dp"
+        android:background="@drawable/header_gradient"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <ImageView
-            android:id="@+id/exitIcon"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:src="@drawable/exit_left"
-            android:contentDescription="Exit Icon" />
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="16dp"
-            android:text="Quản Lý API"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:gravity="center_vertical" />
-    </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <!-- RecyclerView for API List -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvApiList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/headerSection"
-        android:layout_marginTop="8dp" />
     <LinearLayout
         android:id="@+id/selectedApiSection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:layout_margin="10dp"
-        android:background="#00405d">
-
-        <TextView
+        android:layout_marginTop="50dp">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="API ĐANG SỬ DỤNG"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"
-            android:gravity="center"
-            android:layout_marginBottom="4dp" />
-        <ImageView
-            android:id="@+id/img_selectApi"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center_horizontal" />
+            android:layout_alignParentTop="true"
+            android:layout_margin="30dp"
+            android:background="@drawable/border_radiu_api"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:gravity="center"
+                android:text="API ĐANG SỬ DỤNG"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/img_selectApi"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:adjustViewBounds="true" />
+        </LinearLayout>
     </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvApiList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedApiSection"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/btnAddapi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="14dp"
+        android:layout_marginBottom="651dp"
+        android:backgroundTint="#F45A8F"
+        android:padding="12dp"
+        android:text="Thêm API"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </RelativeLayout>

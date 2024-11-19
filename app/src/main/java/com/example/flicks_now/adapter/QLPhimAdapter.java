@@ -8,11 +8,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
-import com.example.flicks_now.model.Goi;
-import com.example.flicks_now.model.KieuPhim;
-import com.example.flicks_now.model.QLPhim;
 import com.example.flicks_now.R;
 import com.example.flicks_now.databinding.ItemQlPhimBinding;
+import com.example.flicks_now.model.Goi;
+import com.example.flicks_now.model.QLPhim;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +20,11 @@ public class QLPhimAdapter extends RecyclerView.Adapter<QLPhimAdapter.QLPhimView
 
     private Context context;
     private List<QLPhim> phimList;
-    private List<KieuPhim> kieuPhimList;
     private List<Goi> goiList;
     private List<QLPhim> selectedMovies = new ArrayList<>(); // Danh sách phim được chọn
     private boolean multiSelectMode = false;
-    private OnMovieSelectListener onMovieSelectListener;
-    private static OnRecyclerViewItemClickListener recyclerViewItemClickListener;
+    private OnMovieSelectListener onMovieSelectListener;//Được gọi khi số lượng phim được chọn thay đổi.
+    private static OnRecyclerViewItemClickListener recyclerViewItemClickListener;//Lắng nghe các sự kiện click trên item của RecyclerView
 
     // Interface để thông báo về trạng thái lựa chọn phim
     public interface OnMovieSelectListener {
@@ -38,10 +36,9 @@ public class QLPhimAdapter extends RecyclerView.Adapter<QLPhimAdapter.QLPhimView
     }
 
     // Constructor
-    public QLPhimAdapter(Context context, List<QLPhim> phimList, List<KieuPhim> kieuPhimList, List<Goi> goiList, OnMovieSelectListener onMovieSelectListener) {
+    public QLPhimAdapter(Context context, List<QLPhim> phimList,  List<Goi> goiList, OnMovieSelectListener onMovieSelectListener) {
         this.context = context;
         this.phimList = phimList;
-        this.kieuPhimList = kieuPhimList;
         this.goiList = goiList;
         this.onMovieSelectListener = onMovieSelectListener;
     }
@@ -65,12 +62,16 @@ public class QLPhimAdapter extends RecyclerView.Adapter<QLPhimAdapter.QLPhimView
         holder.binding.tenphim.setText(currentPhim.getName());
         holder.binding.nam.setText(currentPhim.getYear());
 
-        //String time = getKieuPhimNameById(String.valueOf(currentPhim.getTime()));
         String a = "Phim lẻ: ";
         holder.binding.thoiluong.setText( a + currentPhim.getTime()+"p");
 
         String goiType = getGoiTypeById(Integer.parseInt(currentPhim.getGoi()));
         holder.binding.goiPhim.setText(goiType);
+        if (!goiType.equals("Vip")){
+            holder.binding.goiPhim.setBackgroundResource(R.drawable.thuong_goi);
+        }else{
+            holder.binding.goiPhim.setBackgroundResource(R.drawable.vip_badge);
+        }
 
         holder.binding.theloai.setText(currentPhim.getTheLoai());
         holder.binding.ngaytao.setText(currentPhim.getNgayThemPhim());

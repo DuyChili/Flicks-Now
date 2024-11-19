@@ -39,7 +39,7 @@ public class ManHinhChaoMung extends AppCompatActivity {
         ObjectAnimator scaleXAnimator = ObjectAnimator.ofFloat(heartImageView, "scaleX", 0.8f, 1.2f);
         ObjectAnimator scaleYAnimator = ObjectAnimator.ofFloat(heartImageView, "scaleY", 0.8f, 1.2f);
 
-        int animationDuration = 1000;
+        int animationDuration = 5000;
         scaleXAnimator.setDuration(animationDuration);
         scaleYAnimator.setDuration(animationDuration);
 

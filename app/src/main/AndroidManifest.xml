@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -16,10 +17,28 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.flick_now"
+        android:theme="@style/Theme.Flicks_now"
         tools:targetApi="31">
         <activity
-            android:name=".activity.MainActivity2"
+            android:name=".activity.QuenMatKhauActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.TTYeuCauQuyenActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+
+        <activity
+            android:name=".activity.VeChungToiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.XemPhimFirebaseActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ChiTietPhimFirebaseActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ThemPhimActivity"
@@ -52,18 +71,16 @@
         <activity
             android:name=".activity.CaNhanActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activity.AdminActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.ThanhToanActivity"
             android:exported="false" />
         <activity
             android:name=".activity.VipActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activity.XemPhimActivity"
@@ -75,7 +92,6 @@
         <activity
             android:name=".activity.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity android:name=".activity.DSThongBaoActivity" />
         <activity android:name=".activity.QLThongBaoActivity" />
@@ -88,16 +104,20 @@
         <activity android:name=".activity.CaiDatActivity" />
         <activity android:name=".activity.ChinhSuaThongTinActivity" />
         <activity android:name=".activity.ThongBaoActivity" />
-        <activity
-            android:name=".activity.QuanLyAPI"
-            android:exported="true" />
+        <activity android:name=".activity.QuanLyAPI" />
         <activity
             android:name=".activity.TaiPhimActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity android:name=".activity.XemPhimTaixuongActivity" />
+        <activity
+            android:name=".activity.XemPhimTaixuongActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+        <activity android:name=".activity.DSHoTroActivity" />
         <activity android:name=".activity.HoTroActivity" />
+        <activity android:name=".activity.QLHoTroActivity" />
+        <activity android:name=".activity.QLTheLoaiActivity" />
+        <activity android:name=".activity.QLQuocGiaActivity" />
     </application>
 
 </manifest>

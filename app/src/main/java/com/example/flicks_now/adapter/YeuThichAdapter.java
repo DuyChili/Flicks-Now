@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.flicks_now.model.ChiTietPhim;
 import com.example.flicks_now.databinding.ItemLichsuBinding;
+import com.example.flicks_now.model.ChiTietPhim;
 
 
 import java.util.List;
