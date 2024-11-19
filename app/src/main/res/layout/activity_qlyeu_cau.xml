@@ -84,6 +84,7 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:textColor="@color/white"
                 android:id="@+id/radioToday"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -91,6 +92,7 @@
                 android:text="Hôm nay" />
 
             <RadioButton
+                android:textColor="@color/white"
                 android:id="@+id/radio7Days"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -98,6 +100,7 @@
                 android:text="7 ngày" />
 
             <RadioButton
+                android:textColor="@color/white"
                 android:id="@+id/radio1Month"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -105,6 +108,7 @@
                 android:text="1 tháng" />
 
             <RadioButton
+                android:textColor="@color/white"
                 android:id="@+id/radio1Year"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -112,6 +116,7 @@
                 android:text="1 năm" />
 
             <RadioButton
+                android:textColor="@color/white"
                 android:id="@+id/radioAll"
                 android:layout_width="0dp"
                 android:layout_weight="1"
